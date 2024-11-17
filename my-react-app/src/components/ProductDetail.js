@@ -2,7 +2,7 @@ function ProductDetail() { return (
     <div className="max-w-5xl mx-auto p-4">
         <div className="text-sm text-gray-500 mb-4">
             <a href="#" className="text-blue-500">Trang chủ</a> / <a href="#" className="text-blue-500"> Sản phẩm</a> /
-            <span> Tai nghe Asus ROG Cetra II Core</span>
+            <span> Laptop Asus </span>
         </div>
         
         <div className="bg-white p-4 rounded-lg shadow-md flex">
@@ -17,7 +17,7 @@ function ProductDetail() { return (
                 </div>
             </div>
             <div className="w-1/2 pl-4">
-                <h1 className="text-2xl font-bold mb-2">Tai nghe Asus ROG Cetra II Core</h1>
+                <h1 className="text-2xl font-bold mb-2">Laptop Asus</h1>
                 <div className="flex items-center mb-2">
                     <span className="text-yellow-500 text-lg"><i className="fas fa-star"></i> 5.0</span>
                     <a href="#" className="text-blue-500 ml-2">Xem đánh giá</a>
@@ -49,7 +49,7 @@ function ProductDetail() { return (
                         </tr>
                         <tr className="border-b">
                             <td className="py-2 font-semibold">Model</td>
-                            <td className="py-2">Tai nghe gaming in-ear ROG CETRA II CORE cổng 3.5mm</td>
+                            <td className="py-2"> Asus xxx</td>
                         </tr>
                         <tr className="border-b">
                             <td className="py-2 font-semibold">Kết nối</td>
@@ -64,19 +64,19 @@ function ProductDetail() { return (
                             <td className="py-2">9.4mm</td>
                         </tr>
                         <tr className="border-b">
-                            <td className="py-2 font-semibold">Trở kháng</td>
-                            <td className="py-2">32ohm</td>
+                            <td className="py-2 font-semibold">Cpu</td>
+                            <td className="py-2"></td>
                         </tr>
                         <tr className="border-b">
-                            <td className="py-2 font-semibold">Dạng Tín hiệu</td>
-                            <td className="py-2">Microphone lắp trong: Mọi hướng</td>
+                            <td className="py-2 font-semibold">Gpu</td>
+                            <td className="py-2"></td>
                         </tr>
                         <tr className="border-b">
-                            <td className="py-2 font-semibold">Phản hồi tần số</td>
+                            <td className="py-2 font-semibold">ram</td>
                             <td className="py-2">20Hz - 40KHz</td>
                         </tr>
                         <tr className="border-b">
-                            <td className="py-2 font-semibold">Micro</td>
+                            <td className="py-2 font-semibold">pin</td>
                             <td className="py-2">Đa hướng</td>
                         </tr>
                         <tr className="border-b">
