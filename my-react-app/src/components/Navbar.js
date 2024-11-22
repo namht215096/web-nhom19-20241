@@ -7,7 +7,6 @@ function Navbar() {
         <div className="flex items-center">
           <img
             src="https://placehold.co/50x50"
-            alt="Company Logo"
             className="h-10 mr-2"
           />
         </div>

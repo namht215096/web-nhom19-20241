@@ -1,5 +1,9 @@
-function ProductDetail() { return (
-    <div className="max-w-5xl mx-auto p-4">
+import Navbar from "./Navbar";
+function ProductDetail() { 
+    return (
+    <div>
+        <Navbar/>
+        <div className="max-w-5xl mx-auto p-4">
         <div className="text-sm text-gray-500 mb-4">
             <a href="#" className="text-blue-500">Trang chủ</a> / <a href="#" className="text-blue-500"> Sản phẩm</a> /
             <span> Laptop Asus </span>
@@ -122,7 +126,9 @@ function ProductDetail() { return (
                 
             </div>
         </div>
+        </div>
     </div>
+    
     
     ); } export default ProductDetail;
     
