@@ -120,42 +120,27 @@ function Home() {
                 </ul>
             </div>
             <div className="w-4/5 ">
-                <div className="flex">
-                    <div className="w-full">
-                        <div className="bg-black text-white p-6 mb-4">
+                <div className="flex ">
+                    <div className="w-full ">
+                        <div className="bg-black text-white p-6 mb-4 h-80 ">
                             <h2 className="text-3xl font-bold">GeForce RTX 40 Series</h2>
                             <p className="mt-2">BEYOND FAST</p>
                             <p className="mt-4">NVIDIA® GeForce RTX™ 40 Series GPUs are beyond fast for gamers and creators. They're powered by the ultra-efficient NVIDIA Ada Lovelace architecture which delivers a quantum leap in both performance and AI-powered graphics. Experience lifelike virtual worlds with ray tracing and ultra-high FPS gaming with the lowest latency. Discover revolutionary new ways to create and unprecedented workflow acceleration.</p>
-                            <button className="mt-4 bg-green-600 text-white py-2 px-4 rounded">Shop All</button>
-                            <div className="mt-4 flex items-center">
-                                <img src="https://placehold.co/100x50" alt="MSI logo" className="mr-4"/>
-                                <img src="https://placehold.co/100x50" alt="NVIDIA GeForce RTX logo"/>
-                            </div>
+                            
                         </div>
                     </div>
                     
                 </div>
                 <div className="grid grid-cols-3 gap-4 mt-4">
-                    <div className="bg-blue-100 p-4">
-                        <h3 className="text-orange-600 font-bold">LAPTOP GEARVN</h3>
-                        <p className="text-blue-600">Giảm giá lên đến 30%</p>
-                        <p className="text-2xl font-bold text-blue-600">Giá chỉ từ 9.990.000đ</p>
-                        <p className="text-blue-600">Miễn phí giao hàng</p>
-                        <img src="https://placehold.co/150x100" alt="Laptop"/>
+                    <div className="">
+                        <img src="Screen Shot 2024-11-22 at 07.13.05.png" alt="" />
                     </div>
-                    <div className="bg-pink-100 p-4">
-                        <h3 className="text-green-600 font-bold">LAPTOP GEARVN</h3>
-                        <p className="text-green-600">Ưu đãi cực kì hấp dẫn</p>
-                        <p className="text-2xl font-bold text-green-600">Giá chỉ từ 14.490.000đ</p>
-                        <p className="text-green-600">Miễn phí giao hàng</p>
-                        <img src="https://placehold.co/150x100" alt="Laptop"/>
+                    <div className="">
+                        
+                        <img src="b.png" alt="Laptop"/>
                     </div>
-                    <div className="bg-blue-100 p-4">
-                        <h3 className="text-orange-600 font-bold">PC i5 4060</h3>
-                        <p className="text-blue-600">Học tập - Làm việc - Giải trí</p>
-                        <p className="text-2xl font-bold text-blue-600">Tặng tản nhiệt Corsair trị giá 4.000.000đ</p>
-                        <p className="text-blue-600">Miễn phí giao hàng</p>
-                        <img src="https://placehold.co/150x100" alt="PC build with RGB lighting"/>
+                    <div className="">
+                        <img src="c.png" alt="Laptop"/>
                     </div>
                     <div className="bg-yellow-100 p-4">
                         <h3 className="text-blue-600 font-bold">ĐÓN DEAL XỊN</h3>
