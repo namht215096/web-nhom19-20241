@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
+// import FormModal from "./authen/FormModal";
 function Home() { 
     const [isHovered, setIsHovered] = useState(false);
     return (
         <div>
+            {/* <FormModal/> */}
             <div className="mb-4">
                 <Navbar/>
             </div>

@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import Navbar from "./Navbar";
 function ProductDetail() { 
+
+
+    
     return (
     <div>
         <Navbar/>
