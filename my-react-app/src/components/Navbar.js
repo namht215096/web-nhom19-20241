@@ -2,13 +2,16 @@ import '../css/button.css';
 
 function Navbar() {
     return (
+
+      <>
       <div className="bg-red-600 p-4">
         <div className="mx-36 flex items-center justify-between">
         <div className="flex items-center">
           <img
             src="https://placehold.co/50x50"
             className="h-10 mr-2"
-          />
+            alt="logo"
+          ></img>
         </div>
         
         <button className="button-1 w-24 h-11 mx-2">Danh mục</button>
@@ -44,6 +47,7 @@ function Navbar() {
         </div>
         
       </div>
+      </>
     );
   }
   export default Navbar;
