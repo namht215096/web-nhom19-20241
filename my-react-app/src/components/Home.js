@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from "./Navbar";
+import Footer from './Footer';
 function Home() { 
     const [isHovered, setIsHovered] = useState(false);
     const [products, setProducts] = useState([]);
@@ -23,8 +24,8 @@ function Home() {
 
     return (
         <div>
-            {/* <FormModal/> */}
-            <div className="mb-4">
+           
+            <div className="mb-4 mt-20">
                 <Navbar/>
             </div>
 
@@ -55,7 +56,7 @@ function Home() {
                         
                         <li className="flex items-center justify-between">
                             <span className="flex items-center">
-                                <i className="desktop mr-2"></i> PC GVN
+                                <i className="desktop mr-2"></i> PC
                             </span>
                             
                         </li>
@@ -95,36 +96,21 @@ function Home() {
                             </span>
                             
                         </li>
-                        <li className="flex items-center justify-between">
-                            <span className="flex items-center">
-                                <i className="mouse mr-2"></i> Chuột + Lót chuột
-                            </span>
-                            
-                        </li>
+                        
                         <li className="flex items-center justify-between">
                             <span className="flex items-center">
                                 <i className="headphones mr-2"></i> Tai Nghe
                             </span>
                             
                         </li>
-                        <li className="flex items-center justify-between">
-                            <span className="flex items-center">
-                                <i className="chair mr-2"></i> Ghế - Bàn
-                            </span>
-                            
-                        </li>
+                        
                         <li className="flex items-center justify-between">
                             <span className="flex items-center">
                                 <i className="network-wired mr-2"></i> Phần mềm, mạng
                             </span>
                             
                         </li>
-                        <li className="flex items-center justify-between">
-                            <span className="flex items-center">
-                                <i className="gamepad mr-2"></i> Handheld, Console
-                            </span>
-                            
-                        </li>
+                        
                         <li className="flex items-center justify-between">
                             <span className="flex items-center">
                                 <i className="plug mr-2"></i> Phụ kiện (Hub, sạc, cáp..)
@@ -177,7 +163,7 @@ function Home() {
                         <a href="#" className="text-blue-500">Xem tất cả</a>
                     </div>
 
-                    {/* Grid sản phẩm */}
+                    {/* Grid  */}
                     <div className="grid grid-cols-5 gap-4 ">
                         {products.map((product) => (
                             <div key={product.product_id} className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg">
@@ -192,10 +178,9 @@ function Home() {
                             </div>
                         ))}
                     </div>
-
-                    
                 </div>
             </div>
+            <Footer/>
             </div>
         </div>
         
