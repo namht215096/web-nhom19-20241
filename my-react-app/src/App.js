@@ -9,13 +9,13 @@ function App() {
     <Router>
       <nav>
         <Link to="/"></Link>
-        <Link to="/productdetail"></Link>
+        <Link to="/productdetail/:id"></Link>
         <Link to="/productlist"></Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/productdetail" element={<ProductDetail/>} />
+        <Route path="/productdetail/:id" element={<ProductDetail/>} />
         <Route path="/productlist" element={<ProductList/>} />
       </Routes>
     </Router>

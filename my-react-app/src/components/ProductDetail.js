@@ -1,9 +1,21 @@
-import { useEffect } from "react";
-import Navbar from "./Navbar";
-function ProductDetail() { 
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Navbar from './Navbar';
 
+function ProductDetail() {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
 
-    
+    useEffect(() => {
+        fetch(`http://localhost:8080/api/v1/products/${id}`)
+            .then(response => response.json())
+            .then(data => setProduct(data))
+            .catch(error => console.error('Error fetching product details:', error));
+    }, [id]);
+
+    if (!product) {
+        return <div>Loading...</div>;
+    }
     return (
     <div>
         <Navbar/>
