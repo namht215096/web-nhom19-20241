@@ -7,9 +7,15 @@ function ProductDetail() {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/products/${id}`)
+        fetch(`http://localhost:8080/api/v1/products/detail/${id}`)
             .then(response => response.json())
-            .then(data => setProduct(data))
+            .then(data => {
+                if (data.success && data.data.length > 0) {
+                    setProduct(data.data[0]); // Lấy sản phẩm đầu tiên trong mảng
+                } else {
+                    console.error('Product not found or API error');
+                }
+            })
             .catch(error => console.error('Error fetching product details:', error));
     }, [id]);
 
@@ -19,7 +25,7 @@ function ProductDetail() {
     return (
     <div>
         <Navbar/>
-        <div className="max-w-5xl mx-auto p-4">
+        <div className="max-w-5xl mx-auto p-4 mt-8">
         <div className="text-sm text-gray-500 mb-4">
             <a href="#" className="text-blue-500">Trang chủ</a> / <a href="#" className="text-blue-500"> Sản phẩm</a> /
             <span> Laptop Asus </span>
@@ -27,24 +33,18 @@ function ProductDetail() {
         
         <div className="bg-white p-4 rounded-lg shadow-md flex">
             <div className="w-1/2">
-                <img src="https://placehold.co/400x400" alt="Product image of Asus ROG Cetra II Core with accessories" className="w-full rounded-lg mb-4" />
-                <div className="flex space-x-2 overflow-x-auto">
-                    <img src="https://placehold.co/100x100" alt="Thumbnail 1" className="w-20 h-20 rounded-lg" />
-                    <img src="https://placehold.co/100x100" alt="Thumbnail 2" className="w-20 h-20 rounded-lg" />
-                    <img src="https://placehold.co/100x100" alt="Thumbnail 3" className="w-20 h-20 rounded-lg" />
-                    <img src="https://placehold.co/100x100" alt="Thumbnail 4" className="w-20 h-20 rounded-lg" />
-                    <img src="https://placehold.co/100x100" alt="Thumbnail 5" className="w-20 h-20 rounded-lg" />
-                </div>
+            <img src={product.img} className="w-full rounded-lg mb-4" />
+                
             </div>
             <div className="w-1/2 pl-4">
-                <h1 className="text-2xl font-bold mb-2">Laptop Asus</h1>
+                <h1 className="text-2xl font-bold mb-2">{product.product_name}</h1>
                 <div className="flex items-center mb-2">
                     <span className="text-yellow-500 text-lg"><i className="fas fa-star"></i> 5.0</span>
                     <a href="#" className="text-blue-500 ml-2">Xem đánh giá</a>
                 </div>
                 <div className="bg-yellow-100 p-2 rounded-lg mb-4">
                     <div className="flex items-center justify-between">
-                        <span className="text-red-500 font-bold text-3xl">800.000đ</span>
+                        <span className="text-red-500 font-bold text-3xl">{product.price}</span>
                     </div>
                 </div>
                 <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">MUA NGAY</button>

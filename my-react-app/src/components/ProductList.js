@@ -44,7 +44,7 @@ function ProductList() {
                     <div className="grid grid-cols-5 gap-4">
                         {currentProducts.map((product) => (
                             <Link
-                                to={`/product/${product.product_id}`}
+                                to={`/productdetail/${product.product_id}`}
                                 key={product.product_id}
                                 className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
                             >
