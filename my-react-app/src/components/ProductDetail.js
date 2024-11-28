@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
+import {formatCash} from '../utils/formatCash';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -44,7 +45,7 @@ function ProductDetail() {
                 </div>
                 <div className="bg-yellow-100 p-2 rounded-lg mb-4">
                     <div className="flex items-center justify-between">
-                        <span className="text-red-500 font-bold text-3xl">{product.price}</span>
+                        <span className="text-red-500 font-bold text-3xl">{formatCash(product.price)}</span>
                     </div>
                 </div>
                 <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">MUA NGAY</button>
