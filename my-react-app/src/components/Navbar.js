@@ -3,7 +3,7 @@ import '../css/button.css';
 function Navbar() {
     return (
 
-      <div className="fixed top-0 w-full">
+      <div className="fixed top-0 w-full z-10">
       <div className="bg-red-600 p-4 ">
         <div className="mx-36 flex items-center justify-between">
         <div className="flex items-center">

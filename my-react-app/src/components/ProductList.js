@@ -40,7 +40,6 @@ function ProductList() {
                         <h1 className="text-2xl font-bold">Laptop</h1>
                     </div>
                     <div className="flex justify-between items-center mb-4">
-                        <a href="#" className="text-blue-500">Xem tất cả</a>
                     </div>
                     <div className="grid grid-cols-5 gap-4">
                         {currentProducts.map((product) => (

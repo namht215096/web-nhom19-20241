@@ -1,7 +1,7 @@
 function Footer() {
   return (
-      <div className="bg-white p-8">
-          <div className="grid grid-cols-5 gap-8">
+      <div className="bg-white p-8 mt-8 mx-36">
+          <div className="grid grid-cols-4 gap-8">
               <div>
                   <h3 className="font-bold mb-2">VỀ GEARVN</h3>
                   <ul>
@@ -37,24 +37,7 @@ function Footer() {
                       <li className="mb-1">Email: <a href="mailto:cskh@gearvn.com" className="text-blue-500">cskh@gearvn.com</a></li>
                   </ul>
               </div>
-              <div>
-                  <h3 className="font-bold mb-2">ĐƠN VỊ VẬN CHUYỂN</h3>
-                  <div className="flex space-x-2 mb-4">
-                      <img src="https://placehold.co/50x30" alt="Giao hàng nhanh logo" />
-                      <img src="https://placehold.co/50x30" alt="EMS logo" />
-                      <img src="https://placehold.co/50x30" alt="GVN logistics logo" />
-                      <img src="https://placehold.co/50x30" alt="Thanh niên logistics logo" />
-                  </div>
-                  <h3 className="font-bold mb-2">CÁCH THỨC THANH TOÁN</h3>
-                  <div className="flex space-x-2">
-                      <img src="https://placehold.co/50x30" alt="Internet banking logo" />
-                      <img src="https://placehold.co/50x30" alt="JCB logo" />
-                      <img src="https://placehold.co/50x30" alt="MasterCard logo" />
-                      <img src="https://placehold.co/50x30" alt="ZaloPay logo" />
-                      <img src="https://placehold.co/50x30" alt="Visa logo" />
-                      <img src="https://placehold.co/50x30" alt="MoMo logo" />
-                  </div>
-              </div>
+              
           </div>
       </div>
   );
