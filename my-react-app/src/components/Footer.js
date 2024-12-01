@@ -1,6 +1,6 @@
 function Footer() {
   return (
-      <div className="bg-white p-8 mt-8 mx-36">
+      <div className="bg-white p-8 mt-8 mx-36 border-t border-t-gray-200">
           <div className="grid grid-cols-4 gap-8">
               <div>
                   <h3 className="font-bold mb-2">VỀ GEARVN</h3>
@@ -29,7 +29,7 @@ function Footer() {
                   </ul>
               </div>
               <div>
-                  <h3 className="font-bold mb-2">TỔNG ĐÀI HỖ TRỢ (8:00 - 21:00)</h3>
+                  <h3 className="font-bold mb-2">TỔNG ĐÀI HỖ TRỢ</h3>
                   <ul>
                       <li className="mb-1">Mua hàng: <a href="tel:19005301" className="text-blue-500">1900.5301</a></li>
                       <li className="mb-1">Bảo hành: <a href="tel:19005325" className="text-blue-500">1900.5325</a></li>

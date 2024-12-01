@@ -37,13 +37,13 @@ function Navbar() {
         <div className="mx-36 flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
-              <img src="/laptopicon.svg" className="h-10 mr-2" alt="logo" />
+              <img src="/laptopicon.svg" className="object h-10 w-10 mr-2" alt="logo" />
             </Link>
           </div>
 
           {/* Danh mục */}
-          <div className="relative group ">
-            <button className="button-1 w-24 h-11 mx-2">Danh mục</button>
+          <div className="relative group md:hidden">
+            <button className="button-1 w-24 h-11 mx-2 ">Danh mục</button>
             {/* Dropdown menu */}
             <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-white shadow-lg rounded-lg w-48">
               <ul className="text-gray-700">

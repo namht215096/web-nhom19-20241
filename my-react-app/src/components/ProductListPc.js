@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function ProductList() {
     const [products, setProducts] = useState([]);
@@ -33,7 +34,9 @@ function ProductList() {
 
     return (
         <div>
-            <Navbar />
+            <div className="mb-4 mt-20">
+              <Navbar />
+            </div>
             <div className="container mx-auto p-4">
                 <div className="bg-white p-4 rounded-lg shadow">
                     <div className="flex justify-between items-center mb-4">
@@ -76,6 +79,7 @@ function ProductList() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

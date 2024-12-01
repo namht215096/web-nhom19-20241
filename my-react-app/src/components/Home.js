@@ -138,7 +138,7 @@ function Home() {
       </div>
       <div>
         <div className=" mx-36 mt-8">
-          <div className="bg-white p-4 rounded-lg shadow">
+          <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Laptop bán chạy</h1>
@@ -155,7 +155,7 @@ function Home() {
                 <Link
                   to={`/productdetail/${product.product_id}`}
                   key={product.product_id}
-                  className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
+                  
                 >
                   <div
                     key={product.product_id}
@@ -169,7 +169,7 @@ function Home() {
           </div>
         </div>
         <div className=" mx-36 mt-8">
-          <div className="bg-white p-4 rounded-lg shadow">
+          <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Pc bán chạy</h1>
@@ -186,7 +186,6 @@ function Home() {
                 <Link
                   to={`/productdetail/${product.product_id}`}
                   key={product.product_id}
-                  className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
                 >
                   <div
                     key={product.product_id}
@@ -199,8 +198,8 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className=" mx-36 mt-8">
-          <div className="bg-white p-4 rounded-lg shadow">
+        <div className=" mx-36 mt-8 mb-12">
+          <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Laptop gaming bán chạy</h1>
@@ -217,7 +216,6 @@ function Home() {
                 <Link
                   to={`/productdetail/${product.product_id}`}
                   key={product.product_id}
-                  className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
                 >
                   <div
                     key={product.product_id}
