@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { formatCash } from "../utils/formatCash";
-import formatSpecs  from "../utils/formatSpecs";
+import formatSpecs from "../utils/formatSpecs";
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -52,7 +52,7 @@ function ProductDetail() {
           <div className="w-full md:w-1/2">
             <img src={product.img} className="w-full rounded-lg mb-4" />
           </div>
-          
+
           <div className="w-full md:w-1/2 pl-4">
             <h1 className="text-2xl font-bold mb-2">{product.product_name}</h1>
             <div className="flex items-center mb-2">
@@ -65,50 +65,67 @@ function ProductDetail() {
             </div>
 
             <div className="bg-yellow-100 p-2 rounded-lg mb-4">
-                {product.discount > 0 && (
-                    <p className="text-gray-500 line-through">
-                      {formatCash(product.price)}
-                    </p>
-                )}
+              {product.discount > 0 && (
+                <p className="text-gray-500 line-through">
+                  {formatCash(product.price)}
+                </p>
+              )}
               <div className="flex items-center justify-between">
                 <span className="text-red-500 font-bold text-3xl">
-                  {formatCash(product.price / 100 * (100 - product.discount))}
+                  {formatCash((product.price / 100) * (100 - product.discount))}
                 </span>
               </div>
             </div>
-            <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
-              MUA NGAY
-            </button>
+            {product.stock > 0 ? (
+              <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
+                MUA NGAY
+              </button>
+            ) : (
+              <button className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
+                HẾT HÀNG
+              </button>
+            )}
             <div>
               <h2 className="text-lg font-bold mb-2">Thông tin chung</h2>
               {product.discount > 0 && (
-              <p>
-                <span className="font-bold">Khuyến mãi:</span> Giảm {product.discount}%
-              </p>
+                <p>
+                  <span className="font-bold">Khuyến mãi:</span> Giảm{" "}
+                  {product.discount}%
+                </p>
               )}
               <p>
-                <span className="font-bold">Tình trạng:</span> Mới và Fullbox 100%
+                <span className="font-bold">Tình trạng:</span> Mới và Fullbox
+                100%
               </p>
               <p>
                 <span className="font-bold">Bảo hành:</span> 24 Tháng
               </p>
+              {product.stock > 0 ? (
+                <p>
+                  <span className="font-bold">Trạng thái:</span> Còn hàng
+                </p>
+              ) : (
+                <p>
+                  <span className="font-bold">Trạng thái:</span> Hết hàng
+                </p>
+              )}
             </div>
           </div>
         </div>
 
-        <div style={{paddingTop: 20}} className="flex justify-center">
+        <div style={{ paddingTop: 20 }} className="flex justify-center">
           <div className=" md:w-full bg-white p-6 rounded-lg shadow-md">
             <h1 className="text-2xl font-bold mb-4">Thông tin sản phẩm</h1>
             <h2 className="text-xl font-bold mb-2">Thông số kỹ thuật</h2>
             <table className="w-full text-left border-collapse">
-                <tbody>
+              <tbody>
                 {Object.entries(formattedSpecs).map(([key, value]) => (
-                <tr className="border-b" key={key}>
-                  <td className="py-2 font-semibold">{key}</td>
-                  <td className="py-2">{value}</td>
-                </tr>
+                  <tr className="border-b" key={key}>
+                    <td className="py-2 font-semibold">{key}</td>
+                    <td className="py-2">{value}</td>
+                  </tr>
                 ))}
-                </tbody>
+              </tbody>
             </table>
             {/* <h2 className="text-xl font-bold mt-6 mb-2">
               Đánh giá chi tiết tai nghe gaming in-ear ROG CETRA II CORE
