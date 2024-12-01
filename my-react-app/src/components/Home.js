@@ -43,11 +43,6 @@ function Home() {
                 </span>
               </Link>
 
-              {isHovered && (
-                <div className="absolute top-full mt-2 p-4 bg-gray-200 shadow-lg">
-                  Đây là nội dung hiển thị khi hover
-                </div>
-              )}
             </li>
             <li className="flex items-center justify-between">
               <Link to="/productlist">
@@ -65,43 +60,6 @@ function Home() {
             <li className="flex items-center justify-between">
               <span className="flex items-center">
                 <i className="microchip mr-2"></i> Main, CPU, VGA
-              </span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="hdd mr-2"></i> Case, Nguồn, Tản
-              </span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="memory mr-2"></i> Ổ cứng, RAM, Thẻ nhớ
-              </span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="volume-up mr-2"></i> Loa, Micro, Webcam
-              </span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="tv mr-2"></i> Màn hình
-              </span>
-            </li>
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="keyboard mr-2"></i> Bàn phím
-              </span>
-            </li>
-
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="headphones mr-2"></i> Tai Nghe
-              </span>
-            </li>
-
-            <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="network-wired mr-2"></i> Phần mềm, mạng
               </span>
             </li>
 
