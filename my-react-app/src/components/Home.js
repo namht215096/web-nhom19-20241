@@ -39,7 +39,7 @@ function Home() {
             >
               <Link to="/productlist">
                 <span className="flex items-center">
-                  <i className="laptop mr-2"></i> Laptop
+                  <i className="laptop mr-2"></i> Laptop văn phòng
                 </span>
               </Link>
 
