@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from "./Navbar";
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import { formatCash } from '../utils/formatCash';
 function Home() { 
     const [isHovered, setIsHovered] = useState(false);
     const [products, setProducts] = useState([]);
@@ -36,9 +38,11 @@ function Home() {
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
                         >
+                            <Link to="/productlist">
                             <span className="flex items-center">
                                 <i className="laptop mr-2"></i> Laptop
                             </span>
+                            </Link>
                             
                             {isHovered && (
                             <div className="absolute top-full mt-2 p-4 bg-gray-200 shadow-lg">
@@ -47,9 +51,11 @@ function Home() {
                         )}
                         </li>
                         <li className="flex items-center justify-between">
+                            <Link to="/productlist">
                             <span className="flex items-center">
                                 <i className="gamepad mr-2"></i> Laptop Gaming
                             </span>
+                            </Link>
                             
                         
                         </li>
@@ -169,7 +175,7 @@ function Home() {
                                 <img src={product.img} alt={`Image of ${product.product_name}`} className="w-full h-auto" />
                                 <h2 className="mt-2 text-lg font-bold">{product.product_name}</h2>
                                 <div className="mt-2">
-                                    <span className="price text-red-500 ml-2 font-bold">{product.price}</span>
+                                    <span className="price text-red-500 ml-2 font-bold">{formatCash(product.price)}</span>
                                 </div>
                                 <div className="mt-2 flex items-center">
                                     <span className="text-gray-500">Stock: {product.stock}</span>
@@ -198,7 +204,7 @@ function Home() {
                                 <img src={product.img} alt={`Image of ${product.product_name}`} className="w-full h-auto" />
                                 <h2 className="mt-2 text-lg font-bold">{product.product_name}</h2>
                                 <div className="mt-2">
-                                    <span className="price text-red-500 ml-2 font-bold">{product.price}</span>
+                                    <span className="price text-red-500 ml-2 font-bold">{formatCash(product.price)}</span>
                                 </div>
                                 <div className="mt-2 flex items-center">
                                     <span className="text-gray-500">Stock: {product.stock}</span>
@@ -227,7 +233,7 @@ function Home() {
                                 <img src={product.img} alt={`Image of ${product.product_name}`} className="w-full h-auto" />
                                 <h2 className="mt-2 text-lg font-bold">{product.product_name}</h2>
                                 <div className="mt-2">
-                                    <span className="price text-red-500 ml-2 font-bold">{product.price}</span>
+                                    <span className="price text-red-500 ml-2 font-bold">{formatCash(product.price)}</span>
                                 </div>
                                 <div className="mt-2 flex items-center">
                                     <span className="text-gray-500">Stock: {product.stock}</span>

@@ -1,18 +1,34 @@
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import "../css/button.css";
 import { Button, Modal } from "antd";
 import FormModal from "./authen/FormModal";
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if token exists in local storage
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // Set logged in state based on token presence
+  }, []);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token from local storage
+    setIsLoggedIn(false); // Update logged in state
+  };
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true); // Update logged in state to true
+    handleCancel(); // Close the modal
   };
 
   return (
@@ -20,7 +36,9 @@ function Navbar() {
       <div className="bg-red-600 p-4 ">
         <div className="mx-36 flex items-center justify-between">
           <div className="flex items-center">
-            <img src="/laptopicon.svg" className="h-10 mr-2" alt="logo"></img>
+            <Link to="/">
+              <img src="/laptopicon.svg" className="h-10 mr-2" alt="logo" />
+            </Link>
           </div>
 
           {/* Danh mục */}
@@ -53,15 +71,25 @@ function Navbar() {
             />
           </div>
           <div className="flex items-center space-x-4 text-white">
-            <div className=" items-center mr-8">
-              <span className="text-xs ml-1">Hotline</span>
-              <div className="ml-1 text-xs">1900.5301</div>
-            </div>
 
             <div className="flex items-center">
               <span className="text-xs mr-1">Giỏ hàng</span>
             </div>
-            <div>
+            {isLoggedIn ? (
+              <Button
+                color="danger"
+                variant="outline"
+                style={{
+                  color: "white",
+                  backgroundColor: "#B91C1C",
+                  borderRadius: 0,
+                  padding: 20,
+                }}
+                onClick={handleLogout}
+              >
+                Đăng xuất
+              </Button>
+            ) : (
               <Button
                 color="danger"
                 variant="outline"
@@ -75,15 +103,14 @@ function Navbar() {
               >
                 Đăng nhập
               </Button>
-            </div>
+            )}
 
             <Modal
               footer={null}
               open={isModalOpen}
-              onOk={handleOk}
               onCancel={handleCancel}
             >
-              <FormModal />
+              <FormModal handleLoginSuccess={handleLoginSuccess} handleCancel={handleCancel} />
             </Modal>
           </div>
         </div>

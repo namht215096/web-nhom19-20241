@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { formatCash } from '../utils/formatCash';
 import Navbar from './Navbar';
 
 function ProductList() {
@@ -51,7 +52,7 @@ function ProductList() {
                                 <img src={product.img} alt={`Image of ${product.product_name}`} className="w-full h-auto" />
                                 <h2 className="mt-2 text-lg font-bold">{product.product_name}</h2>
                                 <div className="mt-2">
-                                    <span className="price text-red-500 ml-2 font-bold">{product.price}</span>
+                                    <span className="price text-red-500 ml-2 font-bold">{formatCash(product.price)}</span>
                                 </div>
                                 <div className="mt-2 flex items-center">
                                     <span className="text-gray-500">Stock: {product.stock}</span>
