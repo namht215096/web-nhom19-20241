@@ -31,7 +31,7 @@ function Home() {
 
       <div className="flex mx-36">
         <div className="w-1/5 bg-gray-100 p-4 mr-4">
-          <ul className="space-y-4">
+          <ul className="space-y-10 py-4">
             <li
               className="relative flex items-center justify-between"
               onMouseEnter={() => setIsHovered(true)}
@@ -39,7 +39,8 @@ function Home() {
             >
               <Link to="/productlist/laptop">
                 <span className="flex items-center">
-                  <i className="laptop mr-2"></i> Laptop văn phòng
+                    <img src="/all.svg" alt="" />
+                    <i className="laptop mr-2"></i> Tất cả sản phẩm
                 </span>
               </Link>
 
@@ -47,7 +48,8 @@ function Home() {
             <li className="flex items-center justify-between">
               <Link to="/productlist/laptop-gaming">
                 <span className="flex items-center">
-                  <i className="gamepad mr-2"></i> Laptop Gaming
+                    <img src="/lap.svg" alt="" />
+                    <i className="gamepad mr-2"></i> Laptop 
                 </span>
               </Link>
             </li>
@@ -58,28 +60,35 @@ function Home() {
                   <i className="desktop mr-2"></i> PC
                 </span>
               </Link>
+                <Link to="/pc">
+                    <span className="flex items-center">
+                        <img src="/pc.svg" alt="" />
+                        <i className="gamepad mr-2"></i> Pc 
+                    </span>
+                </Link>
             </li>
             <li className="flex items-center justify-between">
-              <Link to="/productlist/main-cpu-vga">
-                <span className="flex items-center">
-                  <i className="microchip mr-2"></i> Main, CPU, VGA
-                </span>
-              </Link>
+                <Link to="/component">
+                    <span className="flex items-center">
+                        <img src="/comp.svg" alt="" />
+                        <i className="gamepad mr-2"></i> Main Cpu Vga
+                    </span>
+                </Link>
             </li>
 
             <li className="flex items-center justify-between">
-              <Link to="/productlist/phu-kien">
-                <span className="flex items-center">
-                  <i className="plug mr-2"></i> Phụ kiện (Hub, sạc, cáp..)
-                </span>
-              </Link>
+                <Link to="/acs">
+                    <span className="flex items-center">
+                        <img src="/acs.svg" alt="" />
+                        <i className="gamepad mr-2"></i> Phụ kiện  
+                    </span>
+                </Link>
             </li>
             <li className="flex items-center justify-between">
-              <Link to="/">
-                <span className="flex items-center">
-                  <i className="gift mr-2"></i> Dịch vụ và thông tin khác
-                </span>
-              </Link>
+              <span className="flex items-center">
+                <img src="/sup.svg" alt="" />
+                <i className="gift mr-2"></i> Dịch vụ và Hỗ trợ
+              </span>
             </li>
           </ul>
         </div>
@@ -168,7 +177,7 @@ function Home() {
           <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl font-bold">Laptop gaming bán chạy</h1>
+              <h1 className="text-2xl font-bold">Phụ kiện bán chạy</h1>
             </div>
 
             {/* Danh sách hãng */}

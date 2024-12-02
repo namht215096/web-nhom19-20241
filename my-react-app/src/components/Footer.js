@@ -3,7 +3,7 @@ function Footer() {
       <div style={{bottom: 0}} className="bg-white p-8 mt-8 mx-36 border-t border-t-gray-200">
           <div className="grid grid-cols-4 gap-8">
               <div>
-                  <h3 className="font-bold mb-2">VỀ GEARVN</h3>
+                  <h3 className="font-bold mb-2">VỀ CHÚNG TÔI</h3>
                   <ul>
                       <li className="mb-1">Giới thiệu</li>
                       <li className="mb-1">Tuyển dụng</li>
