@@ -7,7 +7,8 @@ import Cart from './components/Cart.js';
 import ProductListLaptop from './components/ProductListLaptop.js';
 import ProductListPc from './components/ProductListPc.js';
 import ProductListAccesory from './components/ProductListAcessory.js';
-import ProductListComponent from './components/ProductListComponent.js';
+import ProductListVGA from './components/ProductListVGA.js';
+import ProductListCPU from './components/ProductListCPU.js';
 import Filter from './components/Filter.js';
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
         <Route path="/productlist/pc" element={<ProductListPc/>} />
         <Route path="/productlist/laptop" element={<ProductListLaptop/>} />
         <Route path="/productlist/acs" element={<ProductListAccesory/>} />
-        <Route path="/productlist/component" element={<ProductListComponent/>} />
+        <Route path="/productlist/vga" element={<ProductListVGA/>} />
+        <Route path="/productlist/cpu" element={<ProductListCPU/>} />
       </Routes>
     </Router>
   );

@@ -9,7 +9,7 @@ export const ProductsCard = ({ product }) => {
         alt={`Image of ${product.product_name}`}
         className="w-full h-auto"
       />
-      <h2 style={{height: 80}} className="mt-2 text-lg font-bold">{product.product_name}</h2>
+      <h2 style={{height: 80, overflow: 'hidden', textOverflow: 'ellipsis'}} className="mt-2 text-lg font-bold">{product.product_name}</h2>
       <div className="mt-10">
         {product.discount > 0 ? (
           <div className="text-gray-400 line-through">

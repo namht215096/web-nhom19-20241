@@ -69,16 +69,25 @@ function Home() {
                 </Link> */}
             </li>
             <li className="flex items-center justify-between">
-                <Link to="/component">
+                <Link to="/productlist/vga">
                     <span className="flex items-center">
                         <img src="/comp.svg" alt="" />
-                        <i className="gamepad mr-2"></i> Main Cpu Vga
+                        <i className="gamepad mr-2"></i> VGA
                     </span>
                 </Link>
             </li>
 
             <li className="flex items-center justify-between">
-                <Link to="/acs">
+                <Link to="/productlist/cpu">
+                    <span className="flex items-center">
+                        <img src="/comp.svg" alt="" />
+                        <i className="gamepad mr-2"></i> CPU
+                    </span>
+                </Link>
+            </li>
+
+            <li className="flex items-center justify-between">
+                <Link to="/productlist/acs">
                     <span className="flex items-center">
                         <img src="/acs.svg" alt="" />
                         <i className="gamepad mr-2"></i> Phụ kiện  
