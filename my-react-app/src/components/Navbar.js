@@ -67,7 +67,7 @@ function Navbar() {
             </div>
             {isLoggedIn ? (
               <>
-              <Link to="/">
+              <Link to="/profile">
               <Button
                 style={{
                   color: "white",

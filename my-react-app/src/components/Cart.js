@@ -45,10 +45,7 @@ function Cart() {
     );
 
     return (
-        <div>
-            <div className="mb-4 mt-20">
-                <Navbar />
-            </div>
+        <div style={{marginTop: 50, marginBottom: 50}}>
 
             <div className="flex justify-center items-center min-h-screen">
                 <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
@@ -97,7 +94,6 @@ function Cart() {
                 </div>
             </div>
 
-            <Footer />
         </div>
     );
 }
