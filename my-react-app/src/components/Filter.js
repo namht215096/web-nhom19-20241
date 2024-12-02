@@ -111,6 +111,7 @@ const Filter = () => {
             </h1>
             <Radio.Group buttonStyle="solid" onChange={onCategoryChange} value={category}>
               <Space direction="vertical">
+                <Radio value="" style={{fontSize: 16, fontWeight: "bold"}}>Tất cả</Radio>
                 <Radio value="laptop" style={{fontSize: 16, fontWeight: "bold"}}>Laptop</Radio>
                 <Radio value="pc" style={{fontSize: 16, fontWeight: "bold"}}>PC</Radio>
                 <Radio value="vga" style={{fontSize: 16, fontWeight: "bold"}}>VGA</Radio>
@@ -125,7 +126,7 @@ const Filter = () => {
             <Slider
               style={{ width: "80%" }}
               range
-              min={10000000}
+              min={2000000}
               max={80000000}
               defaultValue={priceRange}
               onChange={onPriceChange}

@@ -30,6 +30,7 @@ function App() {
         <Route path="/productdetail/:id" element={<ProductDetail/>} />
         <Route path="/productlist/:category" element={<ProductList/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/productlist" element={<ProductList/>} />
         <Route path="/productlist/pc" element={<ProductListPc/>} />
         <Route path="/productlist/laptop" element={<ProductListLaptop/>} />
         <Route path="/productlist/acs" element={<ProductListAccesory/>} />

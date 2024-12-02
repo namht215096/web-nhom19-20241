@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { formatCash } from "../utils/formatCash";
+import AlertMess from "./AlertMess";
+
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);
@@ -12,7 +14,7 @@ function Cart() {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("Please log in to view your cart.");
+            alert("Xin hãy đăng nhập");
             navigate("/"); // Redirect to login page
             return;
         }

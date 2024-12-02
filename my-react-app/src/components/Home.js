@@ -7,9 +7,11 @@ import { ProductsCard } from "./ProductsCard";
 function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const [products, setProducts] = useState([]);
+  const [productsPC, setProductsPC] = useState([]);
+  const [productsVGA, setProductsVGA] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/list`)
+    fetch(`http://localhost:8080/api/v1/products/filter?category=laptop`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -23,6 +25,35 @@ function Home() {
       });
   }, []);
 
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v1/products/filter?category=pc`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setProductsPC(data.data);
+        } else {
+          console.error("Error: Data fetch was not successful", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v1/products/filter?category=vga`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setProductsVGA(data.data);
+        } else {
+          console.error("Error: Data fetch was not successful", data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   return (
     <div>
       <div className="mb-4 mt-20">
@@ -37,7 +68,7 @@ function Home() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Link to="/productlist/laptop">
+              <Link to="/productlist">
                 <span className="flex items-center">
                     <img src="/all.svg" alt="" />
                     <i className="laptop mr-2"></i> Tất cả sản phẩm
@@ -167,7 +198,7 @@ function Home() {
 
             {/* Grid  */}
             <div className="grid grid-cols-5 gap-4 ">
-              {products.slice(0, 5).map((product) => (
+              {productsPC.slice(0, 5).map((product) => (
                 <Link
                   to={`/productdetail/${product.product_id}`}
                   key={product.product_id}
@@ -187,7 +218,7 @@ function Home() {
           <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl font-bold">Phụ kiện bán chạy</h1>
+              <h1 className="text-2xl font-bold">Linh kiện bán chạy</h1>
             </div>
 
             {/* Danh sách hãng */}
@@ -197,7 +228,7 @@ function Home() {
 
             {/* Grid  */}
             <div className="grid grid-cols-5 gap-4 ">
-              {products.slice(0, 5).map((product) => (
+              {productsVGA.slice(0, 5).map((product) => (
                 <Link
                   to={`/productdetail/${product.product_id}`}
                   key={product.product_id}

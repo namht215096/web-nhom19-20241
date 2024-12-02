@@ -5,6 +5,7 @@ export const ProductsCard = ({ product }) => {
   return (
     <div>
       <img
+      style={{height: 200, objectFit: 'cover'}}
         src={product.img}
         alt={`Image of ${product.product_name}`}
         className="w-full h-auto"
