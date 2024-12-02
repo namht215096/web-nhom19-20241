@@ -2,16 +2,30 @@ import React, { useState, useEffect } from "react";
 import "../css/button.css";
 import { Button, Modal } from "antd";
 import FormModal from "./authen/FormModal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchOutlined } from "@ant-design/icons";
+import AlertMess from "./AlertMess";
+
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
+
+  const handleCartClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 3000);
+    } else {
+      navigate("/cart");
+    }
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -48,11 +62,9 @@ function Navbar() {
             <Link to="/filter"> 
               <SearchOutlined />
             </Link>
-            <Link to="/cart">
-              <div className="flex items-center">
-                <span className="text-sm mr-1">Giỏ hàng</span>
-              </div>
-            </Link>
+            <div className="flex items-center" onClick={handleCartClick}>
+              <span className="text-sm mr-1">Giỏ hàng</span>
+            </div>
             {isLoggedIn ? (
               <>
               <Link to="/">
@@ -103,6 +115,8 @@ function Navbar() {
           handleCancel={handleCancel}
         />
       </Modal>
+
+      {showAlert && <AlertMess message="Please log in to view your cart." />}
     </div>
   );
 }

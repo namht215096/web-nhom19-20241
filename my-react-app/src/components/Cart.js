@@ -14,8 +14,7 @@ function Cart() {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
-            alert("Xin hãy đăng nhập");
-            navigate("/"); // Redirect to login page
+            // Redirect to login page
             return;
         }
 

@@ -1,17 +1,16 @@
-import React from "react";
-import { Alert } from "antd";
+import React, { useEffect } from "react";
+import { notification } from "antd";
 
 const AlertMess = ({ message }) => {
-  return (
-    <div style={{ position: "fixed", top: 0, width: "100%", zIndex: 1000 }}>
-      <Alert
-        message={message}
-        type="info"
-        closable
-        banner
-      />
-    </div>
-  );
+  useEffect(() => {
+    notification.info({
+      message: message,
+      placement: "top",
+      duration: 2, // Duration in seconds
+    });
+  }, [message]);
+
+  return null; // No need to render anything in the DOM
 };
 
 export default AlertMess;
