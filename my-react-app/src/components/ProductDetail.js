@@ -17,7 +17,7 @@ function ProductDetail() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
-          setProduct(data.data[0]); 
+          setProduct(data.data[0]);
         } else {
           console.error("Product not found or API error");
         }
@@ -26,7 +26,7 @@ function ProductDetail() {
         console.error("Error fetching product details:", error)
       );
 
-      fetch("http://localhost:8080/api/v1/products/list")
+    fetch("http://localhost:8080/api/v1/products/list")
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
@@ -41,8 +41,6 @@ function ProductDetail() {
         console.error("Error fetching similar products:", error)
       );
   }, [id]);
-
-  
 
   const handleQuantityChange = (change) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + change));
@@ -84,7 +82,6 @@ function ProductDetail() {
     <div>
       <Navbar />
       <div className="max-w-5xl mx-auto p-4 mt-8">
-
         <div className="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row mt-10">
           <div className="w-full md:w-1/2">
             <img src={product.img} className="w-full rounded-lg mb-4" />
@@ -116,22 +113,22 @@ function ProductDetail() {
             {product.stock > 0 ? (
               <div style={{ marginBottom: 20 }} className="flex items-center">
                 <button
-                className="border border-gray-300 rounded px-2 py-1"
-                onClick={() => handleQuantityChange(-1)}
-              >
-                -
-              </button>
-              <input
-                type="text"
-                value={quantity}
-                readOnly
-                className="w-12 text-center border-gray-300"
-              />
-              <button
-                className="border border-gray-300 rounded px-2 py-1"
-                onClick={() => handleQuantityChange(1)}
-              >
-                +
+                  className="border border-gray-300 rounded px-2 py-1"
+                  onClick={() => handleQuantityChange(-1)}
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  value={quantity}
+                  readOnly
+                  className="w-12 text-center border-gray-300"
+                />
+                <button
+                  className="border border-gray-300 rounded px-2 py-1"
+                  onClick={() => handleQuantityChange(1)}
+                >
+                  +
                 </button>
               </div>
             ) : (
@@ -172,7 +169,6 @@ function ProductDetail() {
                 <p>
                   <span className="font-bold">Trạng thái:</span> Hết hàng
                 </p>
-                
               )}
             </div>
           </div>
@@ -192,37 +188,34 @@ function ProductDetail() {
                 ))}
               </tbody>
             </table>
-            
           </div>
           <div className="w-1/3 ml-4 hidden md:block">
             <div className="bg-white p-4 rounded-lg shadow-md mb-4">
               <h2 className="text-xl font-bold mb-2">Sản phẩm tương tự</h2>
               {similarProducts.map((similarProduct) => (
-                <div>
-                    <div key={similarProduct.id} className="flex items-center mb-4">
-                        <img
-                        src={similarProduct.img}
-                        alt="img"
-                        className="w-16 h-16 mr-4"
-                        />
-                        <div>
-                            <div className="font-semibold">{similarProduct.product_name}</div>
-                            <p className="text-red-500 font-bold">
-                                {formatCash(similarProduct.price)}
-                            </p>
-                        </div>
-                        
+                <div key={similarProduct.id}>
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={similarProduct.img}
+                      alt="img"
+                      className="w-16 h-16 mr-4"
+                    />
+                    <div>
+                      <div className="font-semibold">
+                        {similarProduct.product_name}
+                      </div>
+                      <p className="text-red-500 font-bold">
+                        {formatCash(similarProduct.price)}
+                      </p>
                     </div>
-                    
+                  </div>
                 </div>
-              
-            ))}
-              
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

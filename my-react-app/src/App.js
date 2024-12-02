@@ -29,10 +29,10 @@ function App() {
         <Route path="/productdetail/:id" element={<ProductDetail/>} />
         <Route path="/productlist/:category" element={<ProductList/>} />
         <Route path="/cart" element={<Cart/>} />
-        <Route path="/pc" element={<ProductListPc/>} />
-        <Route path="/laptop" element={<ProductListLaptop/>} />
-        <Route path="/acs" element={<ProductListAccesory/>} />
-        <Route path="/component" element={<ProductListComponent/>} />
+        <Route path="/productlist/pc" element={<ProductListPc/>} />
+        <Route path="/productlist/laptop" element={<ProductListLaptop/>} />
+        <Route path="/productlist/acs" element={<ProductListAccesory/>} />
+        <Route path="/productlist/component" element={<ProductListComponent/>} />
       </Routes>
     </Router>
   );

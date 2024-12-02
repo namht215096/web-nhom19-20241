@@ -46,7 +46,7 @@ function Home() {
 
             </li>
             <li className="flex items-center justify-between">
-              <Link to="/productlist/laptop-gaming">
+              <Link to="/productlist/laptop">
                 <span className="flex items-center">
                     <img src="/lap.svg" alt="" />
                     <i className="gamepad mr-2"></i> Laptop 
