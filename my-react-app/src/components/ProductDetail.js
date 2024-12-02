@@ -3,16 +3,18 @@ import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { formatCash } from "../utils/formatCash";
 import formatSpecs from "../utils/formatSpecs";
+import Footer from "./Footer";
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [similarProducts, setSimilarProducts] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/products/detail/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
-          setProduct(data.data[0]); // Lấy sản phẩm đầu tiên trong mảng
+          setProduct(data.data[0]); 
         } else {
           console.error("Product not found or API error");
         }
@@ -20,7 +22,24 @@ function ProductDetail() {
       .catch((error) =>
         console.error("Error fetching product details:", error)
       );
+
+      fetch("http://localhost:8080/api/v1/products/list")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success && data.data.length > 0) {
+          // Lấy ngẫu nhiên 3 sản phẩm
+          const shuffled = data.data.sort(() => 0.5 - Math.random());
+          setSimilarProducts(shuffled.slice(0, 3));
+        } else {
+          console.error("Error fetching similar products");
+        }
+      })
+      .catch((error) =>
+        console.error("Error fetching similar products:", error)
+      );
   }, [id]);
+
+  
 
   if (product) {
     console.log(product);
@@ -85,7 +104,7 @@ function ProductDetail() {
                 HẾT HÀNG
               </button>
             )}
-            <div>
+            <div className="space-y-4">
               <h2 className="text-lg font-bold mb-2">Thông tin chung</h2>
               {product.discount > 0 && (
                 <p>
@@ -108,6 +127,7 @@ function ProductDetail() {
                 <p>
                   <span className="font-bold">Trạng thái:</span> Hết hàng
                 </p>
+                
               )}
             </div>
           </div>
@@ -127,61 +147,37 @@ function ProductDetail() {
                 ))}
               </tbody>
             </table>
-            {/* <h2 className="text-xl font-bold mt-6 mb-2">
-              Đánh giá chi tiết tai nghe gaming in-ear ROG CETRA II CORE
-            </h2>
-            <p className="mb-4">
-              Tai nghe Asus ROG Cetra II Core mang lại chất lượng âm thanh...
-            </p> */}
+            
           </div>
           <div className="w-1/3 ml-4 hidden md:block">
             <div className="bg-white p-4 rounded-lg shadow-md mb-4">
               <h2 className="text-xl font-bold mb-2">Sản phẩm tương tự</h2>
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://placehold.co/100x100"
-                  alt="Tai nghe Gaming Cooler Master CH331 USB"
-                  className="w-16 h-16 mr-4"
-                />
+              {similarProducts.map((similarProduct) => (
                 <div>
-                  <p className="font-semibold">
-                    Tai nghe Gaming Cooler Master CH331 USB
-                  </p>
-                  <p className="text-red-500 font-bold">790.000₫ </p>
+                    <div key={similarProduct.id} className="flex items-center mb-4">
+                        <img
+                        src={similarProduct.img}
+                        alt="img"
+                        className="w-16 h-16 mr-4"
+                        />
+                        <div>
+                            <div className="font-semibold">{similarProduct.product_name}</div>
+                            <p className="text-red-500 font-bold">
+                                {formatCash(similarProduct.price)}
+                            </p>
+                        </div>
+                        
+                    </div>
+                    
                 </div>
-              </div>
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://placehold.co/100x100"
-                  alt="Tai nghe Razer Kraken V4 X USB"
-                  className="w-16 h-16 mr-4"
-                />
-                <div>
-                  <p className="font-semibold">
-                    Tai nghe Razer Kraken V4 X USB
-                  </p>
-                  <p className="text-gray-500 line-through">2.990.000₫</p>
-                  <p className="text-red-500 font-bold">2.530.000₫ </p>
-                </div>
-              </div>
-              <div className="flex items-center mb-4">
-                <img
-                  src="https://placehold.co/100x100"
-                  alt="Tai nghe SteelSeries Xbox Arctis Nova 5 Black"
-                  className="w-16 h-16 mr-4"
-                />
-                <div>
-                  <p className="font-semibold">
-                    Tai nghe SteelSeries Xbox Arctis Nova 5 Black
-                  </p>
-                  <p className="text-gray-500 line-through">4.290.000₫</p>
-                  <p className="text-red-500 font-bold">3.490.000₫ </p>
-                </div>
-              </div>
+              
+            ))}
+              
             </div>
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

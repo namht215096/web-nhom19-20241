@@ -77,7 +77,10 @@ function Navbar() {
         
           <div className="flex items-center space-x-4 text-white mt-4 md:mt-0">
             <div className="flex items-center">
-              <span className="text-xs mr-1">Giỏ hàng</span>
+              <Link to="/cart">
+                <span className="text-xs mr-1">Giỏ hàng</span>
+              </Link>
+              
             </div>
             {isLoggedIn ? (
               <Button
