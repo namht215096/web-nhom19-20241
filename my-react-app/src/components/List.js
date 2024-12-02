@@ -54,17 +54,17 @@ function List({ title, apiEndpoint }) {
             <div className="mb-4 mt-20">
                 <Navbar />
             </div>
-            <div className="container mx-auto p-4">
-                <div className="bg-white p-4 rounded-lg shadow">
+            <div className=" mx-auto lg:mx-24 p-4">
+                <div className="bg-white lg:p-8 p-4 rounded-lg shadow">
                     <div className="flex justify-between items-center mb-4">
                         <h1 className="text-2xl font-bold">{title}</h1>
                     </div>
-                    <div className="grid grid-cols-5 gap-4">
+                    <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-4">
                         {currentProducts.map((product) => (
                             <Link
                                 to={`/productdetail/${product.product_id}`}
                                 key={product.product_id}
-                                className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
+                                className="product-card p-4 rounded-lg shadow hover:shadow-lg"
                             >
                                 <ProductsCard product={product} />
                             </Link>

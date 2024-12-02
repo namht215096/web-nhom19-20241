@@ -48,7 +48,7 @@ function Navbar() {
   return (
     <div className="fixed top-0 w-full z-10  bg-red-600">
       <div className="p-4">
-        <div className="lg:mx-36 flex flex-wrap items-center justify-between">
+        <div className="lg:mx-20 flex flex-wrap items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
               <img
