@@ -11,8 +11,15 @@ export const ProductsCard = ({ product }) => {
       />
       <h2 style={{height: 80}} className="mt-2 text-lg font-bold">{product.product_name}</h2>
       <div className="mt-10">
+        {product.discount > 0 ? (
+          <div className="text-gray-400 line-through">
+            {formatCash(product.price)}
+        </div>
+        ):(
+          <div style={{height: 25}}></div>
+        )}
         <span className="price text-red-500 font-bold">
-          {formatCash(product.price)}
+          {formatCash((product.price / 100) * (100 - product.discount))}
         </span>
       </div>
       <div className="mt-6">

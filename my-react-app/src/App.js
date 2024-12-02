@@ -4,21 +4,21 @@ import Home from './components/Home.js'
 import ProductDetail from './components/ProductDetail.js';
 import ProductList from './components/ProductList.js';
 import Cart from './components/Cart.js';
-
+import Filter from './components/Filter.js';
 function App() {
   return (
     <Router>
       <nav>
-        <Link to="/"></Link>
-        <Link to="/productdetail/:id"></Link>
-        <Link to="/productlist"></Link>
-        <Link to="/cart"></Link>
+        <Link to="/">Home</Link>
+        <Link to="/productlist/laptop">Product List</Link>
+        <Link to="/cart">Cart</Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/filter" element={<Filter/>} />
         <Route path="/productdetail/:id" element={<ProductDetail/>} />
-        <Route path="/productlist" element={<ProductList/>} />
+        <Route path="/productlist/:category" element={<ProductList/>} />
         <Route path="/cart" element={<Cart/>} />
       </Routes>
     </Router>

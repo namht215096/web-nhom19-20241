@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { formatCash } from "../utils/formatCash";
 import formatSpecs from "../utils/formatSpecs";
+
 function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/products/detail/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
-          setProduct(data.data[0]); // Lấy sản phẩm đầu tiên trong mảng
+          setProduct(data.data[0]);
         } else {
           console.error("Product not found or API error");
         }
@@ -22,9 +25,35 @@ function ProductDetail() {
       );
   }, [id]);
 
-  if (product) {
-    console.log(product);
-  }
+  const handleQuantityChange = (change) => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity + change));
+  };
+
+  const handleAddToCart = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please log in to add items to your cart.");
+      return;
+    }
+
+    fetch("http://localhost:8080/api/v1/cart/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ productId: id, quantity }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success || data.message === "Product added to cart") {
+          navigate("/cart");
+        } else {
+          console.error("Error adding to cart", data);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  };
 
   if (!product) {
     return <div>Loading...</div>;
@@ -36,19 +65,8 @@ function ProductDetail() {
     <div>
       <Navbar />
       <div className="max-w-5xl mx-auto p-4 mt-8">
-        <div className="text-sm text-gray-500 mb-4">
-          <a href="#" className="text-blue-500">
-            Trang chủ
-          </a>{" "}
-          /{" "}
-          <a href="#" className="text-blue-500">
-            {" "}
-            Sản phẩm
-          </a>{" "}
-          /<span> Laptop Asus </span>
-        </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row">
+        <div className="bg-white p-4 rounded-lg shadow-md flex flex-col md:flex-row mt-10">
           <div className="w-full md:w-1/2">
             <img src={product.img} className="w-full rounded-lg mb-4" />
           </div>
@@ -77,16 +95,43 @@ function ProductDetail() {
               </div>
             </div>
             {product.stock > 0 ? (
-              <button className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
+              <div style={{ marginBottom: 20 }} className="flex items-center">
+                <button
+                className="border border-gray-300 rounded px-2 py-1"
+                onClick={() => handleQuantityChange(-1)}
+              >
+                -
+              </button>
+              <input
+                type="text"
+                value={quantity}
+                readOnly
+                className="w-12 text-center border-gray-300"
+              />
+              <button
+                className="border border-gray-300 rounded px-2 py-1"
+                onClick={() => handleQuantityChange(1)}
+              >
+                +
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+            {product.stock > 0 ? (
+              <button
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4"
+                onClick={handleAddToCart}
+              >
                 MUA NGAY
               </button>
             ) : (
-              <button className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
+              <button className="bg-gray-300 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">
                 HẾT HÀNG
               </button>
             )}
             <div>
-              <h2 className="text-lg font-bold mb-2">Thông tin chung</h2>
+              <h2 className="text-lg font-bold mb-2 mt-6">Thông tin chung</h2>
               {product.discount > 0 && (
                 <p>
                   <span className="font-bold">Khuyến mãi:</span> Giảm{" "}
@@ -185,4 +230,5 @@ function ProductDetail() {
     </div>
   );
 }
+
 export default ProductDetail;

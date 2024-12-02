@@ -18,6 +18,13 @@ const ConfigTheme = ({children}) => {
                     activeBorderColor: "B91C1C",
                     hoverBorderColor: "B91C1C",
                 },
+                Slider: {
+                    dotActiveColor: "#B91C1C",
+                },
+                Radio: {
+                    buttonSolidCheckedBg: "#B91C1C",
+                    buttonSolidCheckedHoverBg: "#B91C1C",
+                },
             }
         }}
     >

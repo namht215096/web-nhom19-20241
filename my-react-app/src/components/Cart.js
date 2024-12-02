@@ -1,56 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
+import { formatCash } from "../utils/formatCash";
 
 function Cart() {
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            name: "Sản Phẩm 1",
-            price: 1,
-            originalPrice: 99490000,
-            quantity: 1,
-            image: "https://placehold.co/100x100",
-        },
-        {
-            id: 2,
-            name: "Sản Phẩm 2",
-            price: 2,
-            originalPrice: 50900000,
-            quantity: 2,
-            image: "https://placehold.co/100x100",
-        },
-    ]);
+    const [cartItems, setCartItems] = useState([]);
+    const navigate = useNavigate();
 
-    const formatCurrency = (amount) => amount.toLocaleString("vi-VN", { style: "currency", currency: "VND" });
-
-    const handleQuantityChange = (id, delta) => {
-        setProducts((prevProducts) =>
-            prevProducts.map((product) =>
-                product.id === id
-                    ? { ...product, quantity: Math.max(product.quantity + delta, 1) }
-                    : product
-            )
-        );
-    };
-
-    const handleInputChange = (id, value) => {
-        const newQuantity = parseInt(value, 10);
-        if (!isNaN(newQuantity) && newQuantity > 0) {
-            setProducts((prevProducts) =>
-                prevProducts.map((product) =>
-                    product.id === id ? { ...product, quantity: newQuantity } : product
-                )
-            );
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Please log in to view your cart.");
+            navigate("/"); // Redirect to login page
+            return;
         }
-    };
 
-    const handleRemoveProduct = (id) => {
-        setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
-    };
+        fetch("http://localhost:8080/api/v1/cart", {
+            headers: {
+                "Authorization": `Bearer ${token}` // Include token in headers
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    setCartItems(data.data);
+                } else {
+                    console.error("Error fetching cart data", data);
+                }
+            })
+            .catch((error) => console.error("Error:", error));
+    }, [navigate]);
 
-    const totalAmount = products.reduce(
-        (total, product) => total + product.price * product.quantity,
+    console.log(cartItems);
+
+    const formatCurrency = (amount) =>
+        parseFloat(amount).toLocaleString("vi-VN", { style: "currency", currency: "VND" });
+
+    const totalAmount = cartItems.reduce(
+        (total, item) => total + parseFloat(item.price / 100) * (100 - item.discount) * item.quantity,
         0
     );
 
@@ -62,53 +51,32 @@ function Cart() {
 
             <div className="flex justify-center items-center min-h-screen">
                 <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
-                    <a href="#" className="text-blue-500 text-sm mb-4 inline-block">
+                    <Link to="/" className="text-blue-500 text-sm mb-4 inline-block">
                         &lt; Mua thêm sản phẩm khác
-                    </a>
+                    </Link>
                     <div className="border rounded-lg">
                         <div className="p-4">
-                            {products.map((product) => (
-                                <div className="flex items-center mb-8" key={product.id}>
+                            {cartItems.map((item) => (
+                                <div className="flex items-center mb-8" key={item.cart_item_id}>
                                     <img
-                                        src={product.image}
-                                        alt={`Ảnh ${product.name}`}
+                                        src={item.img}
+                                        alt={`Ảnh ${item.product_name}`}
                                         className="w-24 h-24 object-cover mr-4"
                                     />
                                     <div className="flex-1">
-                                        <h2 className="text-lg font-semibold">{product.name}</h2>
-                                        <div className="text-red-500 text-lg font-semibold">
-                                            {formatCurrency(product.price)}
+                                        <h2 className="text-lg font-semibold">{item.product_name}</h2>
+                                        {item.discount > 0 && (
+                                            <div className="text-gray-400 line-through">
+                                                {formatCash(item.price)}
+                                            </div>
+                                        )}
+                                        <div className="text-red-500 font-bold text-3xl">
+                                            {formatCash((item.price / 100) * (100 - item.discount))}
                                         </div>
-                                        <div className="text-gray-400 line-through">
-                                            {formatCurrency(product.originalPrice)}
+                                        <div className="text-gray-400">
+                                            Số lượng: {item.quantity}
                                         </div>
                                     </div>
-                                    <div className="flex items-center">
-                                        <button
-                                            className="border border-gray-300 rounded px-2 py-1"
-                                            onClick={() => handleQuantityChange(product.id, -1)}
-                                        >
-                                            -
-                                        </button>
-                                        <input
-                                            type="text"
-                                            value={product.quantity}
-                                            onChange={(e) => handleInputChange(product.id, e.target.value)}
-                                            className="w-12 text-center border-gray-300"
-                                        />
-                                        <button
-                                            className="border border-gray-300 rounded px-2 py-1"
-                                            onClick={() => handleQuantityChange(product.id, 1)}
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                    <button
-                                        className="text-gray-400 ml-4"
-                                        onClick={() => handleRemoveProduct(product.id)}
-                                    >
-                                        Xóa
-                                    </button>
                                 </div>
                             ))}
 

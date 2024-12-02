@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { formatCash } from '../utils/formatCash';
 import Navbar from './Navbar';
 import { ProductsCard } from './ProductsCard';
 import Footer from './Footer';
 
 function ProductList() {
+    const { category } = useParams();
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(12);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/products/list`)
+        fetch(`http://localhost:8080/api/v1/products/list/${category}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -23,7 +24,7 @@ function ProductList() {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [category]);
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;

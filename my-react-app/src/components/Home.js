@@ -37,7 +37,7 @@ function Home() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Link to="/productlist">
+              <Link to="/productlist/laptop">
                 <span className="flex items-center">
                   <i className="laptop mr-2"></i> Laptop văn phòng
                 </span>
@@ -45,7 +45,7 @@ function Home() {
 
             </li>
             <li className="flex items-center justify-between">
-              <Link to="/productlist">
+              <Link to="/productlist/laptop-gaming">
                 <span className="flex items-center">
                   <i className="gamepad mr-2"></i> Laptop Gaming
                 </span>
@@ -53,25 +53,33 @@ function Home() {
             </li>
 
             <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="desktop mr-2"></i> PC
-              </span>
+              <Link to="/productlist/pc">
+                <span className="flex items-center">
+                  <i className="desktop mr-2"></i> PC
+                </span>
+              </Link>
             </li>
             <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="microchip mr-2"></i> Main, CPU, VGA
-              </span>
+              <Link to="/productlist/main-cpu-vga">
+                <span className="flex items-center">
+                  <i className="microchip mr-2"></i> Main, CPU, VGA
+                </span>
+              </Link>
             </li>
 
             <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="plug mr-2"></i> Phụ kiện (Hub, sạc, cáp..)
-              </span>
+              <Link to="/productlist/phu-kien">
+                <span className="flex items-center">
+                  <i className="plug mr-2"></i> Phụ kiện (Hub, sạc, cáp..)
+                </span>
+              </Link>
             </li>
             <li className="flex items-center justify-between">
-              <span className="flex items-center">
-                <i className="gift mr-2"></i> Dịch vụ và thông tin khác
-              </span>
+              <Link to="/">
+                <span className="flex items-center">
+                  <i className="gift mr-2"></i> Dịch vụ và thông tin khác
+                </span>
+              </Link>
             </li>
           </ul>
         </div>

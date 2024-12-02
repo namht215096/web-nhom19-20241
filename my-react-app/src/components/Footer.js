@@ -1,6 +1,6 @@
 function Footer() {
   return (
-      <div className="bg-white p-8 mt-8 mx-36 border-t border-t-gray-200">
+      <div style={{bottom: 0}} className="bg-white p-8 mt-8 mx-36 border-t border-t-gray-200">
           <div className="grid grid-cols-4 gap-8">
               <div>
                   <h3 className="font-bold mb-2">VỀ GEARVN</h3>
