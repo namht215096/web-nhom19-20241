@@ -57,15 +57,16 @@ function Home() {
             <li className="flex items-center justify-between">
               <Link to="/productlist/pc">
                 <span className="flex items-center">
+                <img src="/pc.svg" alt="" />
                   <i className="desktop mr-2"></i> PC
                 </span>
               </Link>
-                <Link to="/pc">
+                {/* <Link to="/pc">
                     <span className="flex items-center">
                         <img src="/pc.svg" alt="" />
                         <i className="gamepad mr-2"></i> Pc 
                     </span>
-                </Link>
+                </Link> */}
             </li>
             <li className="flex items-center justify-between">
                 <Link to="/component">

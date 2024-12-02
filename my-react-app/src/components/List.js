@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { ProductsCard } from './ProductsCard';
 
 function List({ title, apiEndpoint }) {
     const [products, setProducts] = useState([]);
@@ -65,14 +66,7 @@ function List({ title, apiEndpoint }) {
                                 key={product.product_id}
                                 className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
                             >
-                                <img src={product.img} alt={`Image of ${product.product_name}`} className="w-full h-auto" />
-                                <h2 className="mt-2 text-lg font-bold">{product.product_name}</h2>
-                                <div className="mt-2">
-                                    <span className="price text-red-500 ml-2 font-bold">{product.price}</span>
-                                </div>
-                                <div className="mt-2 flex items-center">
-                                    <span className="text-gray-500">Stock: {product.stock}</span>
-                                </div>
+                                <ProductsCard product={product} />
                             </Link>
                         ))}
                     </div>
