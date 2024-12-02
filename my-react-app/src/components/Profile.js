@@ -7,6 +7,7 @@ import {
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Cart from './Cart';
+import UserInfo from './UserInfo';
 const { Sider, Content } = Layout;
 
 const Profile = () => {
@@ -20,7 +21,7 @@ const Profile = () => {
   const renderContent = () => {
     switch (selectedMenuItem) {
       case '1':
-        return <div>Thông tin cá nhân</div>;
+        return <UserInfo/>;
       case '2':
         return <Cart/>;
       case '3':

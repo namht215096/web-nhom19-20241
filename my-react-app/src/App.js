@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Switch } from 'react-router-dom';
 import Home from './components/Home.js'
 import ProductDetail from './components/ProductDetail.js';
 import ProductList from './components/ProductList.js';
@@ -12,6 +12,7 @@ import ProductListCPU from './components/ProductListCPU.js';
 import Filter from './components/Filter.js';
 import Profile from './components/Profile.js';
 import CartPage from './components/CartPage.js';
+import ProtectedRoute from './components/ProtectedRoute.js';
 function App() {
   return (
     <Router>
@@ -37,7 +38,9 @@ function App() {
         <Route path="/productlist/acs" element={<ProductListAccesory/>} />
         <Route path="/productlist/vga" element={<ProductListVGA/>} />
         <Route path="/productlist/cpu" element={<ProductListCPU/>} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </Router>
   );
