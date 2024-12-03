@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal, Button } from "antd";
+import { Modal, Button, notification } from "antd";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
@@ -77,6 +77,14 @@ function Cart() {
       return;
     }
 
+    if (cartItems.length === 0) {
+      notification.warning({
+        message: 'Cart is Empty',
+        description: 'There are no items in your cart to pay for.',
+      });
+      return;
+    }
+
     const token = localStorage.getItem("token");
     if (!token) {
       console.error("No token found");
@@ -99,6 +107,10 @@ function Cart() {
       if (data.message === 'All cart items updated to paid status successfully') {
         console.log("Cart status updated successfully");
         setCartItems([]); // Clear the cart
+        notification.success({
+          message: 'Giao dịch thành công',
+          description: 'Đơn hàng của bạn đã được giao dịch thành công.',
+        });
       } else {
         console.error("Failed to update cart status", data);
       }
@@ -157,12 +169,15 @@ function Cart() {
           <div className="text-center text-gray-500">
             <h2 className="text-2xl font-semibold">Giỏ hàng của bạn trống</h2>
             <p className="text-lg">Hãy mua sản phẩm để có thể đặt hàng</p>
-            <Link to="/" className="text-blue-500 text-xl mb-4 inline-block">
-             Xem sản phẩm
+            <Link to="/" className="text-blue-500 text-xl inline-block">
+             Mua thêm sản phẩm khác
           </Link>
           </div>
         ) : (
-          <div className="border rounded-lg">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl">
+            <Link to="/" className="text-blue-500 text-lg mb-4 inline-block">
+              &lt; Mua thêm sản phẩm khác
+            </Link>
             <div className="p-4">
               {cartItems.map((item) => (
                 <div
