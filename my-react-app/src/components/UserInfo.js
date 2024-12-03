@@ -105,13 +105,18 @@ const UserInfo = () => {
   }
 
   return (
-    <div>
-      <h2>User Information</h2>
+    <div className="flex justify-center items-center mt-10 mb-10">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl">
+        <h1 className="text-2xl font-bold mb-4">Thông tin của bạn</h1>
+
       <Form form={form} layout="vertical">
-        <Form.Item label="Username">
+        <h2 className="text-lg font-bold mb-2">Tên đăng nhập</h2>
+        <Form.Item  className="text-lg font-bold">
           <Input value={userData.username} disabled />
         </Form.Item>
-        <Form.Item label="Email" name="email" initialValue={userData.email || "Chưa cung cấp"}>
+
+        <h2 className="text-lg font-bold mb-2">Email</h2>
+        <Form.Item  name="email" initialValue={userData.email || "Chưa cung cấp"}>
           {editMode.email ? (
             <Input suffix={<SaveOutlined onClick={() => handleSaveClick('email')} />} />
           ) : (
@@ -120,7 +125,9 @@ const UserInfo = () => {
             </div>
           )}
         </Form.Item>
-        <Form.Item label="Address" name="address" initialValue={userData.address || "Chưa cung cấp"}>
+
+        <h2 className="text-lg font-bold mb-2">Địa chỉ</h2>
+        <Form.Item  name="address" initialValue={userData.address || "Chưa cung cấp"}>
           {editMode.address ? (
             <Input suffix={<SaveOutlined onClick={() => handleSaveClick('address')} />} />
           ) : (
@@ -129,7 +136,9 @@ const UserInfo = () => {
             </div>
           )}
         </Form.Item>
-        <Form.Item label="Phone" name="phone" initialValue={userData.phone || "Chưa cung cấp"}>
+
+        <h2 className="text-lg font-bold mb-2">Số điện thoại</h2>
+        <Form.Item  name="phone" initialValue={userData.phone || "Chưa cung cấp"}>
           {editMode.phone ? (
             <Input suffix={<SaveOutlined onClick={() => handleSaveClick('phone')} />} />
           ) : (
@@ -139,7 +148,7 @@ const UserInfo = () => {
           )}
         </Form.Item>
         <Button onClick={() => setShowPasswordFields(!showPasswordFields)}>
-          {showPasswordFields ? "Cancel Password Change" : "Change Password"}
+          {showPasswordFields ? "Hủy" : "Thay đổi mật khẩu"}
         </Button>
         {showPasswordFields && (
           <>
@@ -149,10 +158,11 @@ const UserInfo = () => {
             <Form.Item label="Confirm Password" name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
               <Input.Password />
             </Form.Item>
-            <Button type="primary" onClick={() => handleSaveClick('password')}>Thay đổi</Button>
+            <Button onClick={() => handleSaveClick('password')}>Thay đổi</Button>
           </>
         )}
-      </Form>
+        </Form>
+      </div>
     </div>
   );
 };

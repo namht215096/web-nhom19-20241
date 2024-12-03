@@ -1,4 +1,4 @@
-import { Button, Form, Input, Alert } from "antd";
+import { Button, Form, Input, Alert, notification } from "antd";
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -13,6 +13,10 @@ const LoginForm = ({ onLoginSuccess }) => {
       const response = await axios.post("http://localhost:8080/api/v1/auth/login", {
         username: values.username,
         password: values.password,
+      });
+      notification.success({
+        message: 'Đăng nhập thành công',
+        description: 'Bạn đã đăng nhập thành công.',
       });
 
       if (response.data.success) {
@@ -58,7 +62,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         </Form.Item>
 
         <Form.Item label={null}>
-          <Button type="primary" htmlType="submit">
+          <Button htmlType="submit">
             Đăng nhập
           </Button>
         </Form.Item>

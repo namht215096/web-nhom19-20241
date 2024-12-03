@@ -1,8 +1,8 @@
-import { Button, Form, Input, Alert } from "antd";
+import { Button, Form, Input, Alert, notification } from "antd";
 import React, { useState } from "react";
 import axios from "axios";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onRegisterSuccess }) => {
   const [errorMessage, setErrorMessage] = useState(null);
 
   const onFinish = async (values) => {
@@ -19,11 +19,15 @@ const RegisterForm = () => {
         password: values.password,
         email: values.email,
       });
+      notification.success({
+        message: 'Đăng ký thành công',
+        description: 'Bạn đã đăng ký thành công. Vui lòng đăng nhập.',
+      });
 
-      if (!response.data.success) {
-        setErrorMessage(response.data.message);
+      if (response.data.success) {
+        onRegisterSuccess();
       } else {
-        // Handle successful registration (e.g., redirect to login page)
+        setErrorMessage(response.data.message);
       }
     } catch (error) {
       setErrorMessage("An error occurred during registration");
@@ -47,7 +51,7 @@ const RegisterForm = () => {
           name="username"
           rules={[{ required: true, message: "Nhập tên người dùng" }]}
         >
-          <Input  />
+          <Input />
         </Form.Item>
 
         <Form.Item
@@ -75,7 +79,7 @@ const RegisterForm = () => {
         </Form.Item>
 
         <Form.Item label={null}>
-          <Button type="primary" htmlType="submit">
+          <Button htmlType="submit">
             Đăng ký
           </Button>
         </Form.Item>

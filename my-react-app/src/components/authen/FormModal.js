@@ -1,8 +1,15 @@
-import React from 'react'
-import { Input, Tabs } from 'antd';
+import React, { useState } from 'react';
+import { Tabs } from 'antd';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+
 const FormModal = ({ handleLoginSuccess, handleCancel }) => {
+  const [activeTabKey, setActiveTabKey] = useState('1');
+
+  const handleRegisterSuccess = () => {
+    setActiveTabKey('1');
+  };
+
   const items = [
     {
       key: '1',
@@ -12,12 +19,12 @@ const FormModal = ({ handleLoginSuccess, handleCancel }) => {
     {
       key: '2',
       label: `Đăng Ký`,
-      children: <RegisterForm />,
+      children: <RegisterForm onRegisterSuccess={handleRegisterSuccess} />,
     }
   ]
   return (
     <div>
-        <Tabs defaultActiveKey="1" items={items} />
+        <Tabs activeKey={activeTabKey} onChange={setActiveTabKey} items={items} />
     </div>
   )
 }

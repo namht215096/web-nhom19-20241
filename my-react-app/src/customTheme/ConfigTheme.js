@@ -25,6 +25,16 @@ const ConfigTheme = ({children}) => {
                     buttonSolidCheckedBg: "#B91C1C",
                     buttonSolidCheckedHoverBg: "#B91C1C",
                 },
+                Button: {
+                    colorBgContainer: "#B91C1C",
+                    defaultBg: "#B91C1C",
+                    defaultColor: "#fff",
+                    defaultHoverBorderColor: "#B91C1C",
+                    defaultHoverColor: "#fff",
+                    defaultActiveBg: "#B91C1C",
+                    defaultActiveColor: "#fff",
+                    defaultActiveBorderColor: "#B91C1C",
+                },
             }
         }}
     >
