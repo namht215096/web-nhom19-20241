@@ -9,11 +9,11 @@ import { formatCash } from "../utils/formatCash";
 const Filter = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(12);
+  const [productsPerPage] = useState(20);
 
   const [category, setCategory] = useState("");
   const [name, setName] = useState("");
-  const [priceRange, setPriceRange] = useState([20000000, 30000000]);
+  const [priceRange, setPriceRange] = useState([200000, 80000000]);
 
   useEffect(() => {
     // Fetch all products initially
@@ -66,10 +66,26 @@ const Filter = () => {
     indexOfLastProduct
   );
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const totalPages = Math.ceil(products.length / productsPerPage);
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePageChange = (pageNumber) => {
+    if (pageNumber >= 1 && pageNumber <= totalPages) {
+      setCurrentPage(pageNumber);
+    }
+  };
+
+  const getPageNumbers = () => {
+    const visiblePages = 5;
+    const pages = [];
+
+    const startPage = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+    const endPage = Math.min(totalPages, startPage + visiblePages - 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
+  };
 
   return (
     <div>
@@ -84,7 +100,12 @@ const Filter = () => {
           <Col xl={24} lg={24} md={24} sm={24} xs={24}>
             <div style={{ padding: "0 10% " }}>
               <h1
-                style={{ fontSize: 20, fontWeight: "bold", marginBottom: 10, color: "#DC2626" }}
+                style={{
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  marginBottom: 10,
+                  color: "#DC2626",
+                }}
               >
                 Tên sản phẩm
               </h1>
@@ -96,27 +117,92 @@ const Filter = () => {
             </div>
           </Col>
           <Col xl={12} style={{ padding: "0 10%", marginTop: 30 }}>
-            <h1 style={{ fontSize: 20, fontWeight: "bold", marginBottom: 10, color: "#DC2626" }}>
+            <h1
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+                marginBottom: 10,
+                color: "#DC2626",
+              }}
+            >
               Loại sản phẩm
             </h1>
-            <Radio.Group buttonStyle="solid" onChange={onCategoryChange} value={category}>
-              <Space direction="vertical">
-                <Radio value="" style={{fontSize: 16, fontWeight: "bold"}}>Tất cả</Radio>
-                <Radio value="laptop" style={{fontSize: 16, fontWeight: "bold"}}>Laptop</Radio>
-                <Radio value="pc" style={{fontSize: 16, fontWeight: "bold"}}>PC</Radio>
-                <Radio value="vga" style={{fontSize: 16, fontWeight: "bold"}}>VGA</Radio>
-                <Radio value="cpu" style={{fontSize: 16, fontWeight: "bold"}}>CPU</Radio>
+            <Radio.Group
+              buttonStyle="solid"
+              onChange={onCategoryChange}
+              value={category}
+            >
+              <Radio value="" style={{ fontSize: 16, fontWeight: "bold" }}>
+                Tất cả
+              </Radio>
+              <Space style={{marginLeft: 10}} direction="vertical">
+                <Radio
+                  value="laptop"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Laptop
+                </Radio>
+                <Radio value="pc" style={{ fontSize: 16, fontWeight: "bold" }}>
+                  PC
+                </Radio>
+                <Radio value="vga" style={{ fontSize: 16, fontWeight: "bold" }}>
+                  VGA
+                </Radio>
+              </Space>
+              <Space style={{marginLeft: 10}} direction="vertical">
+                <Radio value="cpu" style={{ fontSize: 16, fontWeight: "bold" }}>
+                  CPU
+                </Radio>
+                <Radio
+                  value="case"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Case
+                </Radio>
+                <Radio
+                  value="screen"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Màn hình
+                </Radio>
+              </Space>
+              <Space style={{marginLeft: 10}} direction="vertical">
+                <Radio
+                  value="keyboard"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Bàn phím
+                </Radio>
+                <Radio
+                  value="mouse"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Chuột
+                </Radio>
+                <Radio
+                  value="headphone"
+                  style={{ fontSize: 16, fontWeight: "bold" }}
+                >
+                  Tai nghe
+                </Radio>
               </Space>
             </Radio.Group>
           </Col>
           <Col span={12} style={{ padding: "0 10%", marginTop: 30 }}>
-            <h1 style={{ fontSize: 20, fontWeight: "bold", marginBottom: 10, color: "#DC2626" }}>
+            <h1
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+                marginBottom: 10,
+                color: "#DC2626",
+              }}
+            >
               Tầm Giá
             </h1>
             <Slider
               style={{ width: "80%" }}
               range
-              min={2000000}
+              min={200000}
               max={80000000}
               defaultValue={priceRange}
               onChange={onPriceChange}
@@ -157,7 +243,7 @@ const Filter = () => {
               <h1 className="text-2xl font-bold">Tất cả sản phẩm</h1>
             </div>
             <div className="flex justify-between items-center mb-4"></div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 gap-2">
               {currentProducts.map((product) => (
                 <Link
                   to={`/productdetail/${product.product_id}`}
@@ -170,7 +256,18 @@ const Filter = () => {
             </div>
             <div className="mt-4 flex justify-center">
               <ul className="flex space-x-2">
-                {pageNumbers.map((number) => (
+                <li>
+                  <button
+                    className={`px-3 py-1 h-8 rounded-md ${
+                      currentPage === 1 ? "bg-gray-200" : "bg-gray-100"
+                    }`}
+                    disabled={currentPage === 1}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                  >
+                    <img className="rotate-180" src="/arrow.svg" alt="" />
+                  </button>
+                </li>
+                {getPageNumbers().map((number) => (
                   <li
                     key={number}
                     className={`cursor-pointer px-3 rounded-md py-1 ${
@@ -178,11 +275,22 @@ const Filter = () => {
                         ? "bg-blue-500 text-white"
                         : "bg-gray-100"
                     }`}
-                    onClick={() => paginate(number)}
+                    onClick={() => handlePageChange(number)}
                   >
                     {number}
                   </li>
                 ))}
+                <li>
+                  <button
+                    className={`px-3 py-1 h-8 rounded-md ${
+                      currentPage === totalPages ? "bg-gray-200" : "bg-gray-100"
+                    }`}
+                    disabled={currentPage === totalPages}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  >
+                    <img src="/arrow.svg" alt="" />
+                  </button>
+                </li>
               </ul>
             </div>
           </div>

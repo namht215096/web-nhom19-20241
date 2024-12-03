@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import { formatCash } from "../utils/formatCash";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/style.module.css";
 const PaidProducts = () => {
   const [dataSource, setDataSource] = useState([]);
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const PaidProducts = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          setDataSource(data.data);
+          setDataSource(data.data.reverse());
           console.log(data.data);
         } else {
           console.error("Error fetching cart data", data);
@@ -36,11 +37,13 @@ const PaidProducts = () => {
       dataIndex: "img",
       key: "img",
       render: (_, record) => (
-        <img
-          src={record.img}
+        <div style={{ display: "flex", alignItems: "center", minWidth: 100 }}>
+          <img
+            src={record.img}
           alt="product"
-          style={{ width: 100, height: 100 }}
-        />
+            style={{ width: 100, height: 100 }}
+          />
+        </div>
       ),
     },
     {
@@ -55,7 +58,7 @@ const PaidProducts = () => {
       render: (_, record) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           {record.discount > 0 && (
-            <span style={{ color: "red", textDecoration: "line-through" }}>
+            <span className={styles.originalPrice} style={{ color: "red", textDecoration: "line-through" }}>
               {formatCash(record.price)}
             </span>
           )}

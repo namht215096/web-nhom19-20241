@@ -54,6 +54,11 @@ function Home() {
         console.error("Error fetching data:", error);
       });
   }, []);
+  function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  
+  const rndInt = randomIntFromInterval(0, 10);
   return (
     <div>
       <div className="mb-4 mt-20">
@@ -113,7 +118,7 @@ function Home() {
               <li className="flex items-center justify-between">
                 <Link to="/productlist/case">
                   <span className="flex items-center">
-                    <img src="/acs.svg" alt="" />
+                    <img src="/case.svg" alt="" />
                     <i className="gamepad mr-2"></i> Case
                   </span>
                 </Link>
@@ -122,7 +127,7 @@ function Home() {
               <li className="flex items-center justify-between">
                 <Link to="/productlist/screen">
                   <span className="flex items-center">
-                    <img src="/acs.svg" alt="" />
+                    <img src="/screen.svg" alt="" />
                     <i className="gamepad mr-2"></i> Màn hình
                   </span>
                 </Link>
@@ -139,7 +144,7 @@ function Home() {
               <li className="flex items-center justify-between">
                 <Link to="/productlist/mouse">
                   <span className="flex items-center">
-                    <img src="/acs.svg" alt="" />
+                    <img src="/mouse.svg" alt="" />
                     <i className="gamepad mr-2"></i> Chuột
                   </span>
                 </Link>
@@ -191,7 +196,7 @@ function Home() {
 
               {/* Grid  */}
               <div className="grid grid-cols-5 gap-3 ">
-                {products.slice(0, 5).map((product) => (
+                {products.slice(rndInt, rndInt + 5).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}
@@ -221,7 +226,7 @@ function Home() {
 
               {/* Grid  */}
               <div className="grid grid-cols-5 gap-4 ">
-                {productsPC.slice(0, 5).map((product) => (
+                {productsPC.slice(rndInt, rndInt + 5).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}
@@ -251,7 +256,7 @@ function Home() {
 
               {/* Grid  */}
               <div className="grid grid-cols-5 gap-4 ">
-                {productsVGA.slice(0, 5).map((product) => (
+                {productsVGA.slice(rndInt, rndInt + 5).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}

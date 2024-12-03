@@ -151,11 +151,14 @@ const UserInfo = () => {
           {showPasswordFields ? "Hủy" : "Thay đổi mật khẩu"}
         </Button>
         {showPasswordFields && (
-          <>
-            <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
+          <> 
+            <h2 className="text-lg font-bold mb-2">Mật khẩu</h2>
+            <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
               <Input.Password />
             </Form.Item>
-            <Form.Item label="Confirm Password" name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
+
+            <h2 className="text-lg font-bold mb-2">Nhập lại mật khẩu</h2>
+            <Form.Item name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
               <Input.Password />
             </Form.Item>
             <Button onClick={() => handleSaveClick('password')}>Thay đổi</Button>

@@ -35,6 +35,12 @@ const ConfigTheme = ({children}) => {
                     defaultActiveColor: "#fff",
                     defaultActiveBorderColor: "#B91C1C",
                 },
+                Menu: {
+                    darkItemSelectedBg: "#E83D3D",
+                    darkItemSelectedColor: "#fff",
+                    darkItemHoverColor: "#B91C1C",
+                    darkItemDisabledColor: "#B91C1C",
+                }
             }
         }}
     >

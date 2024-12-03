@@ -7,7 +7,7 @@ import { ProductsCard } from './ProductsCard';
 function List({ title, apiEndpoint }) {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(10);
+    const [productsPerPage] = useState(20);
 
     useEffect(() => {
         fetch(apiEndpoint)
@@ -59,7 +59,7 @@ function List({ title, apiEndpoint }) {
                     <div className="flex justify-between items-center mb-4">
                         <h1 className="text-2xl font-bold">{title}</h1>
                     </div>
-                    <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-4">
+                    <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-1 gap-4">
                         {currentProducts.map((product) => (
                             <Link
                                 to={`/productdetail/${product.product_id}`}
