@@ -13,6 +13,7 @@ import Filter from './components/Filter.js';
 import Profile from './components/Profile.js';
 import CartPage from './components/CartPage.js';
 import ProtectedRoute from './components/ProtectedRoute.js';
+import Dashboard from './components/Dashboard.js';
 import ProductsListScreen from './components/ProductsListScreen.js';
 import ProductsListKeyboard from './components/ProductsListKeyboard.js';
 import ProductsListCase from './components/ProductsListCase.js';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/productlist/headphone" element={<ProductsListHeadphone/>} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </Router>

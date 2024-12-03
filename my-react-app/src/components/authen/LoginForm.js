@@ -1,10 +1,13 @@
 import { Button, Form, Input, Alert, notification } from "antd";
 import React, { useState } from "react";
 import axios from "axios";
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [form] = Form.useForm();
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const onFinish = async (values) => {
     console.log("Form Values:", values); // Log values to ensure they are captured correctly
@@ -23,7 +26,13 @@ const LoginForm = ({ onLoginSuccess }) => {
         // Store the token in local storage
         localStorage.setItem("token", response.data.token);
 
-        onLoginSuccess(); // Call the function to close the modal
+        // Decode the token to check the user's role
+        const decodedToken = jwtDecode(response.data.token);
+        if (decodedToken.role === 'admin') {
+          navigate('/dashboard'); // Navigate to dashboard if role is admin
+        } else {
+          onLoginSuccess(); // Call the function to close the modal
+        }
       } else {
         setErrorMessage(response.data.message);
       }

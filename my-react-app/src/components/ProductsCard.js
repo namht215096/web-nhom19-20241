@@ -3,10 +3,9 @@ import { formatCash } from "../utils/formatCash";
 
 export const ProductsCard = ({ product }) => {
   return (
-    <div 
-      className="flex flex-col  "
+    <div
+      className="flex flex-col"
       style={{
-
         maxWidth: "300px", // Đặt chiều rộng tối đa
         aspectRatio: "3/6", // Đặt tỉ lệ chiều rộng / chiều cao
       }}
@@ -22,7 +21,7 @@ export const ProductsCard = ({ product }) => {
           objectFit: "cover",
         }}
       />
-      
+
       {/* Tên sản phẩm */}
       <h2
         className="mt-2 text-xs lg:text-sm  font-semibold "
