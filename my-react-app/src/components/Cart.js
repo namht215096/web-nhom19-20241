@@ -45,7 +45,7 @@ function Cart() {
     );
 
     return (
-        <div style={{marginTop: 50, marginBottom: 50}}>
+        <div style={{marginTop: 20, marginBottom: 50}}>
 
             <div className="flex justify-center items-center min-h-screen">
                 <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">

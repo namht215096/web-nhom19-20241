@@ -11,7 +11,7 @@ const Filter = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
-  const [category, setCategory] = useState("laptop");
+  const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [priceRange, setPriceRange] = useState([20000000, 30000000]);
 
@@ -41,16 +41,6 @@ const Filter = () => {
 
   const onPriceChange = (value) => {
     setPriceRange(value);
-  };
-
-  const onMinPriceChange = (e) => {
-    const newMinPrice = parseInt(e.target.value, 10) || 0;
-    setPriceRange([newMinPrice, priceRange[1]]);
-  };
-
-  const onMaxPriceChange = (e) => {
-    const newMaxPrice = parseInt(e.target.value, 10) || 0;
-    setPriceRange([priceRange[0], newMaxPrice]);
   };
 
   const handleSearch = () => {

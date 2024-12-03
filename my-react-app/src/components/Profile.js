@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import Cart from './Cart';
 import UserInfo from './UserInfo';
+import PaidProducts from './PaidProducts';
 const { Sider, Content } = Layout;
 
 const Profile = () => {
@@ -25,7 +26,7 @@ const Profile = () => {
       case '2':
         return <Cart/>;
       case '3':
-        return <div>Lịch sử mua hàng</div>;
+        return <PaidProducts/>;
       default:
         return <div>Welcome to the profile page!</div>;
     }
@@ -35,7 +36,7 @@ const Profile = () => {
     <>
     <Navbar/>
     <Layout style={{ minHeight: '100vh', marginTop: 72 }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} trigger={null}>
+      <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} trigger={null} breakpoint='lg'>
         <Menu
           theme="light"
           defaultSelectedKeys={['1']}
