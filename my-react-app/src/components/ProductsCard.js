@@ -17,16 +17,16 @@ export const ProductsCard = ({ product }) => {
         className=" object-cover"
         style={{
           width: "100%",
-          height: "50%", // Chiếm 60% chiều cao thẻ
+          height: "45%",
           objectFit: "cover",
         }}
       />
 
       {/* Tên sản phẩm */}
       <h2
-        className="mt-2 text-xs lg:text-sm  font-semibold "
+        className="mt-2 text-xs lg:text-sm xl:text-base font-semibold "
         style={{
-          height: "20%", // Chiếm 15% chiều cao thẻ
+          height: "25%", 
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}
@@ -46,15 +46,15 @@ export const ProductsCard = ({ product }) => {
         ) : (
           <div style={{ height: "1em" }}></div>
         )}
-        <span className="text-red-500 text-xl  font-bold">
+        <span className="text-red-500 lg:text-lg text-xs font-bold">
           {formatCash((product.price / 100) * (100 - product.discount))}
         </span>
       </div>
 
       {/* Trạng thái hàng */}
-      <div className=" ">
+      <div className=" pt-2 ">
         {product.stock > 0 ? (
-          <span className="text-green-500 text-md ">Còn hàng</span>
+          <span className="text-green-500 text-xs lg:block hidden ">Còn hàng</span>
         ) : (
           <span className="text-red-500 text-md ">HẾT HÀNG</span>
         )}
