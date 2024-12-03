@@ -26,7 +26,7 @@ const Profile = () => {
       case '1':
         return <UserInfo/>;
       case '2':
-        return (<div style={{height: '60vh'}}><Cart/></div>);
+        return (<div style={{minHeight: '60vh'}}><Cart/></div>);
       case '3':
         return (<div><PaidProducts/></div>);
       default:

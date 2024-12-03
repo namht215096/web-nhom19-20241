@@ -1,7 +1,7 @@
 function Footer() {
   return (
       <div style={{bottom: 0}} className="bg-white p-8 mt-8 lg:mx-20 border-t border-t-gray-200">
-          <div className="grid grid-cols-4 gap-8">
+          <div className="grid xl:grid-cols-4 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-2 gap-8">
               <div>
                   <h3 className="font-bold mb-2">VỀ CHÚNG TÔI</h3>
                   <ul>

@@ -6,7 +6,7 @@ export const ProductsCard = ({ product }) => {
     <div 
       className="flex flex-col  "
       style={{
-        width: "100%",
+
         maxWidth: "300px", // Đặt chiều rộng tối đa
         aspectRatio: "3/6", // Đặt tỉ lệ chiều rộng / chiều cao
       }}

@@ -164,7 +164,7 @@ function Cart() {
       >
         <p>Vui lòng cập nhật địa chỉ và số điện thoại liên hệ</p>
       </Modal>
-      <div className="flex justify-center items-center" style={{marginTop: '20%', marginBottom: '20%'}}>
+      <div >
         { cartItems.length === 0 ? (
           <div className="text-center text-gray-500">
             <h2 className="text-2xl font-semibold">Giỏ hàng của bạn trống</h2>

@@ -85,7 +85,7 @@ function List({ title, apiEndpoint }) {
                                 <li
                                     key={number}
                                     className={`cursor-pointer px-3 rounded-md py-1 ${
-                                        currentPage === number ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                                        currentPage === number ? 'bg-red-500 text-white' : 'bg-gray-100'
                                     }`}
                                     onClick={() => handlePageChange(number)}
                                 >

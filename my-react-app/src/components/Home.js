@@ -4,11 +4,33 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { formatCash } from "../utils/formatCash";
 import { ProductsCard } from "./ProductsCard";
+
 function Home() {
   const [isHovered, setIsHovered] = useState(false);
   const [products, setProducts] = useState([]);
   const [productsPC, setProductsPC] = useState([]);
   const [productsVGA, setProductsVGA] = useState([]);
+  const [numProducts, setNumProducts] = useState(5); // State to manage number of products displayed
+
+  useEffect(() => {
+    const updateNumProducts = () => {
+      const width = window.innerWidth;
+      if (width > 1200) {
+        setNumProducts(5);
+      } else if (width > 992) {
+        setNumProducts(4);
+      } else if (width > 768) {
+        setNumProducts(3);
+      } else {
+        setNumProducts(2);
+      }
+    };
+
+    updateNumProducts(); // Initial call to set the number of products
+    window.addEventListener("resize", updateNumProducts); // Add event listener for window resize
+
+    return () => window.removeEventListener("resize", updateNumProducts); // Cleanup event listener
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/products/filter?category=laptop`)
@@ -54,11 +76,14 @@ function Home() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  function randomIntFromInterval(min, max) { // min and max included 
+
+  function randomIntFromInterval(min, max) {
+    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-  
+
   const rndInt = randomIntFromInterval(0, 10);
+
   return (
     <div>
       <div className="mb-4 mt-20">
@@ -195,8 +220,8 @@ function Home() {
               </div>
 
               {/* Grid  */}
-              <div className="grid grid-cols-5 gap-3 ">
-                {products.slice(rndInt, rndInt + 5).map((product) => (
+              <div className={`grid grid-cols-${numProducts} gap-3`}>
+                {products.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}
@@ -225,15 +250,15 @@ function Home() {
               </div>
 
               {/* Grid  */}
-              <div className="grid grid-cols-5 gap-4 ">
-                {productsPC.slice(rndInt, rndInt + 5).map((product) => (
+              <div className={`grid grid-cols-${numProducts} gap-4`}>
+                {productsPC.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}
                   >
                     <div
                       key={product.product_id}
-                      className="product-card  p-4 rounded-lg shadow hover:shadow-lg"
+                      className="product-card p-4 rounded-lg shadow hover:shadow-lg"
                     >
                       <ProductsCard product={product} />
                     </div>
@@ -255,8 +280,8 @@ function Home() {
               </div>
 
               {/* Grid  */}
-              <div className="grid grid-cols-5 gap-4 ">
-                {productsVGA.slice(rndInt, rndInt + 5).map((product) => (
+              <div className={`grid grid-cols-${numProducts} gap-4`}>
+                {productsVGA.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
                     to={`/productdetail/${product.product_id}`}
                     key={product.product_id}
@@ -278,4 +303,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;

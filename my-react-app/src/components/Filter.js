@@ -243,7 +243,7 @@ const Filter = () => {
               <h1 className="text-2xl font-bold">Tất cả sản phẩm</h1>
             </div>
             <div className="flex justify-between items-center mb-4"></div>
-            <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 gap-2">
+            <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 xs:grid-cols-2 gap-2">
               {currentProducts.map((product) => (
                 <Link
                   to={`/productdetail/${product.product_id}`}
@@ -272,7 +272,7 @@ const Filter = () => {
                     key={number}
                     className={`cursor-pointer px-3 rounded-md py-1 ${
                       currentPage === number
-                        ? "bg-blue-500 text-white"
+                        ? "bg-red-500 text-white"
                         : "bg-gray-100"
                     }`}
                     onClick={() => handlePageChange(number)}
