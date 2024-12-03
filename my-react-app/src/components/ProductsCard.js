@@ -3,31 +3,61 @@ import { formatCash } from "../utils/formatCash";
 
 export const ProductsCard = ({ product }) => {
   return (
-    <div>
+    <div 
+      className="flex flex-col  "
+      style={{
+        width: "100%",
+        maxWidth: "300px", // Đặt chiều rộng tối đa
+        aspectRatio: "3/6", // Đặt tỉ lệ chiều rộng / chiều cao
+      }}
+    >
+      {/* Hình ảnh sản phẩm */}
       <img
-      style={{height: 200, objectFit: 'cover'}}
         src={product.img}
         alt={`Image of ${product.product_name}`}
-        className="w-full h-auto"
+        className=" object-cover"
+        style={{
+          width: "100%",
+          height: "50%", // Chiếm 60% chiều cao thẻ
+          objectFit: "cover",
+        }}
       />
-      <h2 style={{height: 80, overflow: 'hidden', textOverflow: 'ellipsis'}} className="mt-2 text-lg font-bold">{product.product_name}</h2>
-      <div className="mt-10">
+      
+      {/* Tên sản phẩm */}
+      <h2
+        className="mt-2 text-xs lg:text-sm  font-semibold "
+        style={{
+          height: "20%", // Chiếm 15% chiều cao thẻ
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+        }}
+      >
+        {product.product_name}
+      </h2>
+
+      {/* Giá sản phẩm */}
+      <div
+        className="mt-2 flex flex-col "
+        style={{ height: "15%" }} // Chiếm 15% chiều cao thẻ
+      >
         {product.discount > 0 ? (
-          <div className="text-gray-400 line-through">
+          <div className="text-gray-400 text-sm line-through">
             {formatCash(product.price)}
-        </div>
-        ):(
-          <div style={{height: 25}}></div>
+          </div>
+        ) : (
+          <div style={{ height: "1em" }}></div>
         )}
-        <span className="price text-red-500 font-bold">
+        <span className="text-red-500 text-sm  font-bold">
           {formatCash((product.price / 100) * (100 - product.discount))}
         </span>
       </div>
-      <div className="mt-6">
+
+      {/* Trạng thái hàng */}
+      <div className=" ">
         {product.stock > 0 ? (
-          <span className="text-green-500">Còn hàng</span>
+          <span className="text-green-500 text-sm ">Còn hàng</span>
         ) : (
-          <span className="text-red-500">HẾT HÀNG</span>
+          <span className="text-red-500 text-sm ">HẾT HÀNG</span>
         )}
       </div>
     </div>

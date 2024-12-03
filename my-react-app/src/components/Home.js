@@ -59,10 +59,10 @@ function Home() {
       <div className="mb-4 mt-20">
         <Navbar />
       </div>
-
-      <div className="flex mx-36">
-        <div className="w-1/5 bg-gray-100 p-4 mr-4">
-          <ul className="space-y-10 py-4">
+    <div className="lg:mx-20">
+        <div className="flex ">
+        <div className="w-1/5 bg-gray-100 p-4 mr-4 hidden lg:block">
+          <ul className="space-y-10 py-4 w-40">
             <li
               className="relative flex items-center justify-between"
               onMouseEnter={() => setIsHovered(true)}
@@ -92,12 +92,7 @@ function Home() {
                   <i className="desktop mr-2"></i> PC
                 </span>
               </Link>
-                {/* <Link to="/pc">
-                    <span className="flex items-center">
-                        <img src="/pc.svg" alt="" />
-                        <i className="gamepad mr-2"></i> Pc 
-                    </span>
-                </Link> */}
+                
             </li>
             <li className="flex items-center justify-between">
                 <Link to="/productlist/vga">
@@ -128,12 +123,12 @@ function Home() {
             <li className="flex items-center justify-between">
               <span className="flex items-center">
                 <img src="/sup.svg" alt="" />
-                <i className="gift mr-2"></i> Dịch vụ và Hỗ trợ
+                <i className="gift mr-2"></i> Hỗ trợ
               </span>
             </li>
           </ul>
         </div>
-        <div className="w-4/5 ">
+        <div className="lg:w-4/5 w-full ">
           <div className="flex ">
             <div className="w-full cursor-pointer">
               <img src="nvidiabaner.jpg" alt="" />
@@ -151,22 +146,17 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
       <div>
-        <div className=" mx-36 mt-8">
+        <div className=" mt-8">
           <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Laptop bán chạy</h1>
             </div>
 
-            {/* Danh sách hãng */}
-            <div className="flex justify-between items-center mb-4">
-              <div className="flex space-x-4"></div>
-            </div>
-
             {/* Grid  */}
-            <div className="grid grid-cols-5 gap-4 ">
+            <div className="grid grid-cols-5 gap-3 ">
               {products.slice(0, 5).map((product) => (
                 <Link
                   to={`/productdetail/${product.product_id}`}
@@ -175,7 +165,7 @@ function Home() {
                 >
                   <div
                     key={product.product_id}
-                    className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
+                    className="product-card p-4 rounded-lg shadow hover:shadow-lg"
                   >
                     <ProductsCard product={product} />
                   </div>
@@ -184,7 +174,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className=" mx-36 mt-8">
+        <div className=" mt-8">
           <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
@@ -205,7 +195,7 @@ function Home() {
                 >
                   <div
                     key={product.product_id}
-                    className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
+                    className="product-card  p-4 rounded-lg shadow hover:shadow-lg"
                   >
                     <ProductsCard product={product} />
                   </div>
@@ -214,7 +204,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className=" mx-36 mt-8 mb-12">
+        <div className=" mt-8 mb-12">
           <div className="bg-white p-4 ">
             {/* Tiêu đề */}
             <div className="flex justify-between items-center mb-4">
@@ -235,7 +225,7 @@ function Home() {
                 >
                   <div
                     key={product.product_id}
-                    className="product-card bg-gray-100 p-4 rounded-lg shadow hover:shadow-lg"
+                    className="product-card p-4 rounded-lg shadow hover:shadow-lg"
                   >
                     <ProductsCard product={product} />
                   </div>
@@ -244,8 +234,9 @@ function Home() {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
+    </div>
+        <Footer />
     </div>
   );
 }
