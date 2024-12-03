@@ -47,7 +47,7 @@ export const ProductsCard = ({ product }) => {
         ) : (
           <div style={{ height: "1em" }}></div>
         )}
-        <span className="text-red-500 text-sm  font-bold">
+        <span className="text-red-500 text-xl  font-bold">
           {formatCash((product.price / 100) * (100 - product.discount))}
         </span>
       </div>
@@ -55,9 +55,9 @@ export const ProductsCard = ({ product }) => {
       {/* Trạng thái hàng */}
       <div className=" ">
         {product.stock > 0 ? (
-          <span className="text-green-500 text-sm ">Còn hàng</span>
+          <span className="text-green-500 text-md ">Còn hàng</span>
         ) : (
-          <span className="text-red-500 text-sm ">HẾT HÀNG</span>
+          <span className="text-red-500 text-md ">HẾT HÀNG</span>
         )}
       </div>
     </div>

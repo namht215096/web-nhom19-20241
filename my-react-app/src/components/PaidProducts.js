@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'antd';
 import { formatCash } from '../utils/formatCash';
+import { useNavigate } from 'react-router-dom';
 const PaidProducts = () => {
     const [dataSource, setDataSource] = useState([]);
+    const navigate = useNavigate();
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (!token) {
@@ -19,6 +22,7 @@ const PaidProducts = () => {
             .then((data) => {
                 if (data.success) {
                     setDataSource(data.data);
+                    console.log(data.data);
                 } else {
                     console.error("Error fetching cart data", data);
                 }
@@ -62,13 +66,24 @@ const PaidProducts = () => {
 
       ];
       
-      
-  return (
-    <div style={{marginTop: 20, marginBottom: 20}}>
-        <h1>Lịch sử mua hàng</h1>
-        <Table columns={columns} dataSource={dataSource} />
-    </div>
-  )
+      const handleRowClick = (record) => {
+        navigate(`/productdetail/${record.product_id}`);
+    };
+
+    return (
+        <div style={{marginTop: 20, marginBottom: 20}}>
+            <h1>Lịch sử mua hàng</h1>
+            <Table
+                columns={columns}
+                dataSource={dataSource}
+                onRow={(record) => ({
+                    onClick: () => handleRowClick(record), // Navigate on row click
+                })}
+                rowKey={(record) => `${record.cart_item_id}`} // Ensure unique keys
+                pagination={{ pageSize: 5 }} // Set the number of rows per page
+            />
+        </div>
+    )
 }
 
 export default PaidProducts
