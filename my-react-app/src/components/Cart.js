@@ -153,7 +153,7 @@ function Cart() {
   };
 
   return (
-    <div>
+    <div className=" my-36" >
       <Modal
         title="Thông báo"
         visible={isModalVisible}
@@ -174,11 +174,11 @@ function Cart() {
           </Link>
           </div>
         ) : (
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl">
+          <div className="bg-white p-6 rounded-lg lg:mx-36 mx-8  shadow-lg  ">
             <Link to="/" className="text-blue-500 text-lg mb-4 inline-block">
               &lt; Mua thêm sản phẩm khác
             </Link>
-            <div className="p-4">
+            <div className=" p-4">
               {cartItems.map((item) => (
                 <div
                   className="flex items-center mb-8 cursor-pointer"

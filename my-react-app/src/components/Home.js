@@ -111,7 +111,7 @@ function Home() {
                 <i className="gamepad mr-2"></i> Laptop
               </Link>
             </li>
-            <li className="flex items-center justify-between">
+            <li className="flex items-center justify-between hover:font-bold hover:text-red-600">
               <Link
                 to="/productlist/pc"
                 className="flex items-center hover:font-bold hover:text-red-600"
