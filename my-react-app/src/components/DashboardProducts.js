@@ -60,7 +60,7 @@ const DashboardProducts = () => {
   const isAdmin = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      notification.error({ message: "No token found" });
+      notification.error({ message: "Không tìm thấy token" });
       return false;
     }
     const decodedToken = jwtDecode(token);
@@ -70,7 +70,7 @@ const DashboardProducts = () => {
   const handleAddOrUpdate = async (values) => {
     if (!isAdmin()) {
       notification.error({
-        message: "You do not have permission to perform this action",
+        message: "Bạn không có quyền thực hiện hành động này",
       });
       return;
     }
@@ -100,55 +100,63 @@ const DashboardProducts = () => {
       });
 
       if (response.data.success) {
-        notification.success({ message: "Product saved successfully" });
+        notification.success({ message: "Lưu thành công" });
         fetchProducts();
         setIsModalVisible(false);
         setEditingProduct(null);
         form.resetFields();
       } else {
-        notification.error({ message: "Failed to save product" });
+        notification.error({ message: "Lưu thất bại" });
       }
     } catch (error) {
       console.error("Error saving product:", error);
       notification.error({
-        message: "Error saving product",
+        message: "Lưu thất bại",
         description:
           error.response?.data?.message || "An unexpected error occurred",
       });
     }
   };
 
-  const handleDelete = async (productId) => {
+  const handleDelete = (productId) => {
     if (!isAdmin()) {
       notification.error({
-        message: "You do not have permission to perform this action",
+        message: "Bạn không có quyền thực hiện hành động này",
       });
       return;
     }
 
-    const token = localStorage.getItem("token");
-    try {
-      const response = await axios.delete(
-        `http://localhost:8080/api/v1/products/admin/delete/${productId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+    Modal.confirm({
+      title: "Bạn có chắc chắn muốn xoá sản phẩm này?",
+      onOk: async () => {
+        const token = localStorage.getItem("token");
+        try {
+          const response = await axios.delete(
+            `http://localhost:8080/api/v1/products/admin/delete/${productId}`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
 
-      if (response.data.success) {
-        notification.success({ message: "Product deleted successfully" });
-        fetchProducts();
-      } else {
-        notification.error({ message: "Failed to delete product" });
-      }
-    } catch (error) {
-      console.error("Error deleting product:", error);
-      notification.error({
-        message: "Error deleting product",
-        description:
-          error.response?.data?.message || "An unexpected error occurred",
-      });
-    }
+          if (response.data.success) {
+            notification.success({ message: "Xoá thành công" });
+            fetchProducts();
+          } else {
+            notification.error({ message: "Xoá thất bại" });
+          }
+        } catch (error) {
+          console.error("Error deleting product:", error);
+          notification.error({
+            message: "Xoá thất bại",
+            description:
+              error.response?.data?.message || "An unexpected error occurred",
+          });
+        }
+      },
+      onCancel() {
+        console.log("Delete action canceled");
+      },
+    });
   };
 
   const columns = [
@@ -195,10 +203,13 @@ const DashboardProducts = () => {
 
   return (
     <div>
+      <h2 className="text-center text-2xl font-bold mt-10 mb-5">
+        Quản lý sản phẩm
+      </h2>
       {/* filter */}
       <Row style={{ marginTop: 30, marginBottom: 30 }}>
         <Col xl={24} lg={24} md={24} sm={24} xs={24}>
-          <div style={{ padding: "0 5% " }}>
+          <div >
             <h1
               style={{
                 fontSize: 20,
@@ -216,7 +227,7 @@ const DashboardProducts = () => {
             />
           </div>
         </Col>
-        <Col xl={12} style={{ padding: "0 5%", marginTop: 30 }}>
+        <Col xl={12} style={{  marginTop: 30 }}>
           <h1
             style={{
               fontSize: 20,
@@ -282,7 +293,7 @@ const DashboardProducts = () => {
             </Space>
           </Radio.Group>
         </Col>
-        <Col span={12} style={{ padding: "0 5%", marginTop: 30 }}>
+        <Col span={12} style={{  marginTop: 30 }}>
           <h1
             style={{
               fontSize: 20,
@@ -310,7 +321,7 @@ const DashboardProducts = () => {
             </h1>
           </div>
         </Col>
-        <Col span={24} style={{ marginTop: 50, padding: "0 5%" }}>
+        <Col span={24} style={{ marginTop: 50}}>
           <Button
             type="primary"
             onClick={fetchProducts}
