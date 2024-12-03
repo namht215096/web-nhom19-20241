@@ -12,11 +12,11 @@ import {
 } from "@ant-design/icons";
 import DashboardOverall from "./DashboardOverall";
 import DashboardProducts from "./DashboardProducts";
+import DashboardUsers from "./DashboardUsers";
 const items = [
   { label: "Tổng quan", key: "1", icon: <PieChartOutlined /> },
   { label: "Quản lý sản phẩm", key: "2", icon: <PayCircleOutlined /> },
   { label: "Quản lý người dùng", key: "3", icon: <TruckOutlined /> },
-  { label: "Quản lý đơn hàng", key: "4", icon: <SolutionOutlined /> },
 ];
 
 const Dashboard = () => {
@@ -37,9 +37,7 @@ const Dashboard = () => {
       case "2":
         return (<DashboardProducts />);
       case "3":
-        return <Title level={4}>Quản lý người dùng</Title>;
-      case "4":
-        return <Title level={4}>Quản lý đơn hàng</Title>;
+        return <DashboardUsers />;
       default:
         return <Title level={4}>Quản lý kho</Title>;
     }
