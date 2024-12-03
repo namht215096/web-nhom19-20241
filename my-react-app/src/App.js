@@ -13,6 +13,11 @@ import Filter from './components/Filter.js';
 import Profile from './components/Profile.js';
 import CartPage from './components/CartPage.js';
 import ProtectedRoute from './components/ProtectedRoute.js';
+import ProductsListScreen from './components/ProductsListScreen.js';
+import ProductsListKeyboard from './components/ProductsListKeyboard.js';
+import ProductsListCase from './components/ProductsListCase.js';
+import ProductsListMouse from './components/ProductsListMouse.js';
+import ProductsListHeadphone from './components/ProductsListHeadphone.js';
 function App() {
   return (
     <Router>
@@ -38,6 +43,11 @@ function App() {
         <Route path="/productlist/acs" element={<ProductListAccesory/>} />
         <Route path="/productlist/vga" element={<ProductListVGA/>} />
         <Route path="/productlist/cpu" element={<ProductListCPU/>} />
+        <Route path="/productlist/screen" element={<ProductsListScreen/>} />
+        <Route path="/productlist/keyboard" element={<ProductsListKeyboard/>} />
+        <Route path="/productlist/case" element={<ProductsListCase/>} />
+        <Route path="/productlist/mouse" element={<ProductsListMouse/>} />
+        <Route path="/productlist/headphone" element={<ProductsListHeadphone/>} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
