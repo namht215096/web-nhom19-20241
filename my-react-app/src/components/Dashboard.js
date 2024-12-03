@@ -11,6 +11,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import DashboardOverall from "./DashboardOverall";
+import DashboardProducts from "./DashboardProducts";
 const items = [
   { label: "Tổng quan", key: "1", icon: <PieChartOutlined /> },
   { label: "Quản lý sản phẩm", key: "2", icon: <PayCircleOutlined /> },
@@ -34,7 +35,7 @@ const Dashboard = () => {
           </div>
         );
       case "2":
-        return <Title level={4}>Quản lý sản phẩm</Title>;
+        return (<DashboardProducts />);
       case "3":
         return <Title level={4}>Quản lý người dùng</Title>;
       case "4":
