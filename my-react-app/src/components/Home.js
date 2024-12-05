@@ -78,7 +78,6 @@ function Home() {
   }, []);
 
   function randomIntFromInterval(min, max) {
-    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
@@ -102,7 +101,7 @@ function Home() {
                 <i className="laptop mr-2"></i> Tất cả sản phẩm
               </Link>
             </li>
-            <li className="flex items-center justify-between">
+            <li className="flex items-center justify-between ">
               <Link
                 to="/productlist/laptop"
                 className="flex items-center hover:font-bold hover:text-red-600"
@@ -208,12 +207,11 @@ function Home() {
         <div>
           <div className=" mt-8">
             <div className="bg-white p-4 ">
-              {/* Tiêu đề */}
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Laptop bán chạy</h1>
               </div>
 
-              {/* Grid  */}
+              
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
@@ -233,17 +231,14 @@ function Home() {
           </div>
           <div className=" mt-8">
             <div className="bg-white p-4 ">
-              {/* Tiêu đề */}
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Pc bán chạy</h1>
               </div>
 
-              {/* Danh sách hãng */}
               <div className="flex justify-between items-center mb-4">
                 <div className="flex space-x-4"></div>
               </div>
 
-              {/* Grid  */}
               <div className={`grid grid-cols-${numProducts} gap-4`}>
                 {productsPC.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
@@ -263,17 +258,15 @@ function Home() {
           </div>
           <div className=" mt-8 mb-12">
             <div className="bg-white p-4 ">
-              {/* Tiêu đề */}
+      
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Linh kiện bán chạy</h1>
               </div>
 
-              {/* Danh sách hãng */}
               <div className="flex justify-between items-center mb-4">
                 <div className="flex space-x-4"></div>
               </div>
 
-              {/* Grid  */}
               <div className={`grid grid-cols-${numProducts} gap-4`}>
                 {productsVGA.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
