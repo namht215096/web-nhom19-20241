@@ -3,13 +3,10 @@ import List from "./List";
 
 function ProductListLaptop() {
   return (
-    <div>
-      <List
-        title="Laptop"
-        apiEndpoint="http://localhost:8080/api/v1/products/filter?category=laptop"
-      />
-    </div>
-    
+    <List
+      title="Laptop"
+      apiEndpoint="https://web-back-end-1.onrender.com/api/v1/products/filter?category=laptop"
+    />
   );
 }
 

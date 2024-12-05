@@ -14,7 +14,7 @@ const PaidProducts = () => {
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/cart/paid", {
+    fetch("https://web-back-end-1.onrender.com/api/v1/cart/paid", {
       headers: {
         Authorization: `Bearer ${token}`, // Include token in headers
       },

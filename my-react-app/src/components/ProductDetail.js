@@ -4,7 +4,8 @@ import Navbar from "./Navbar";
 import { formatCash } from "../utils/formatCash";
 import formatSpecs from "../utils/formatSpecs";
 import Footer from "./Footer";
-
+import { notification } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/detail/${id}`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/detail/${id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
@@ -26,7 +27,7 @@ function ProductDetail() {
         console.error("Error fetching product details:", error)
       );
 
-    fetch("http://localhost:8080/api/v1/products/list")
+    fetch("https://web-back-end-1.onrender.com/api/v1/products/list")
       .then((response) => response.json())
       .then((data) => {
         if (data.success && data.data.length > 0) {
@@ -49,11 +50,13 @@ function ProductDetail() {
   const handleAddToCart = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Please log in to add items to your cart.");
+      notification.error({
+        message: "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng",
+      });
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/cart/add", {
+    fetch("https://web-back-end-1.onrender.com/api/v1/cart/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +76,7 @@ function ProductDetail() {
   };
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div><LoadingOutlined style={{ fontSize: 50, color: "#DC2626" }} /></div>;
   }
 
   const formattedSpecs = formatSpecs(product.specs);

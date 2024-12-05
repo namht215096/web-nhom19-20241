@@ -14,7 +14,7 @@ const RegisterForm = ({ onRegisterSuccess }) => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8080/api/v1/auth/register", {
+      const response = await axios.post("https://web-back-end-1.onrender.com/api/v1/auth/register", {
         username: values.username,
         password: values.password,
         email: values.email,

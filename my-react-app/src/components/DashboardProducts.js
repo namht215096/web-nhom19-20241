@@ -45,7 +45,7 @@ const DashboardProducts = () => {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/api/v1/products/filter?category=${category}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}&name=${name}`
+        `https://web-back-end-1.onrender.com/api/v1/products/filter?category=${category}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}&name=${name}`
       );
       if (response.data.success) {
         setProducts(response.data.data);
@@ -90,8 +90,8 @@ const DashboardProducts = () => {
 
     try {
       const url = editingProduct
-        ? `http://localhost:8080/api/v1/products/admin/update/${editingProduct.product_id}`
-        : "http://localhost:8080/api/v1/products/admin/add";
+        ? `https://web-back-end-1.onrender.com/api/v1/products/admin/update/${editingProduct.product_id}`
+        : "https://web-back-end-1.onrender.com/api/v1/products/admin/add";
 
       const method = editingProduct ? "put" : "post";
 
@@ -132,7 +132,7 @@ const DashboardProducts = () => {
         const token = localStorage.getItem("token");
         try {
           const response = await axios.delete(
-            `http://localhost:8080/api/v1/products/admin/delete/${productId}`,
+            `https://web-back-end-1.onrender.com/api/v1/products/admin/delete/${productId}`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }

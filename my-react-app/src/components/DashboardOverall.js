@@ -17,7 +17,7 @@ const DashboardOverall = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/v1/products/list");
+        const response = await axios.get("https://web-back-end-1.onrender.com/api/v1/products/list");
         const products = response.data.data;
 
         // Count products by category
@@ -73,7 +73,7 @@ const DashboardOverall = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:8080/api/v1/auth/admin/all-users", {
+        const response = await axios.get("https://web-back-end-1.onrender.com/api/v1/auth/admin/all-users", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -97,7 +97,7 @@ const DashboardOverall = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:8080/api/v1/cart/admin/total-paid-items", {
+        const response = await axios.get("https://web-back-end-1.onrender.com/api/v1/cart/admin/total-paid-items", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -5,6 +5,7 @@ import { ProductsCard } from "./ProductsCard";
 import Footer from "./Footer";
 import { Button, Col, Input, Radio, Row, Slider, Space } from "antd";
 import { formatCash } from "../utils/formatCash";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Filter = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ const Filter = () => {
 
   useEffect(() => {
     // Fetch all products initially
-    fetch("http://localhost:8080/api/v1/products/filter")
+    fetch("https://web-back-end-1.onrender.com/api/v1/products/filter")
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -44,7 +45,7 @@ const Filter = () => {
   };
 
   const handleSearch = () => {
-    const query = `http://localhost:8080/api/v1/products/filter?category=${category}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}&name=${name}`;
+    const query = `https://web-back-end-1.onrender.com/api/v1/products/filter?category=${category}&minPrice=${priceRange[0]}&maxPrice=${priceRange[1]}&name=${name}`;
     fetch(query)
       .then((response) => response.json())
       .then((data) => {
@@ -236,9 +237,13 @@ const Filter = () => {
             </Button>
           </Col>
         </Row>
-
-        <div className="container mx-auto p-4">
-          <div className="bg-white p-4 ">
+        {products.length === 0 ? (  
+          <div className="flex justify-center items-center h-screen">
+            <LoadingOutlined style={{ fontSize: 50, color: "#DC2626" }} />
+          </div>
+        ) : (
+          <div className="container mx-auto p-4">
+            <div className="bg-white p-4 ">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold">Tất cả sản phẩm</h1>
             </div>
@@ -294,7 +299,8 @@ const Filter = () => {
               </ul>
             </div>
           </div>
-        </div>
+          </div>
+        )}
         <Footer />
       </div>
     </div>

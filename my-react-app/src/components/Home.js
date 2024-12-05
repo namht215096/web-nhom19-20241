@@ -210,6 +210,8 @@ function Home() {
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Laptop bán chạy</h1>
               </div>
+
+              
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
