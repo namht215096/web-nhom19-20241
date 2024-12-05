@@ -40,7 +40,7 @@ const PaidProducts = () => {
         <div style={{ display: "flex", alignItems: "center", minWidth: 100 }}>
           <img
             src={record.img}
-          alt="product"
+            alt="product"
             style={{ width: 100, height: 100 }}
           />
         </div>

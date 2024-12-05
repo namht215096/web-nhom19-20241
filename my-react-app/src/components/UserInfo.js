@@ -121,61 +121,61 @@ const UserInfo = () => {
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-5xl">
         <h1 className="text-2xl font-bold mb-4">Thông tin của bạn</h1>
 
-      <Form form={form} layout="vertical">
-        <h2 className="text-lg font-bold mb-2">Tên đăng nhập</h2>
-        <Form.Item  className="text-lg font-bold">
-          <Input value={userData.username} disabled />
-        </Form.Item>
+        <Form form={form} layout="vertical">
+          <h2 className="text-lg font-bold mb-2">Tên đăng nhập</h2>
+          <Form.Item className="text-lg font-bold">
+            <Input value={userData.username} disabled />
+          </Form.Item>
 
-        <h2 className="text-lg font-bold mb-2">Email</h2>
-        <Form.Item  name="email" initialValue={userData.email || "Chưa cung cấp"}>
-          {editMode.email ? (
-            <Input suffix={<SaveOutlined onClick={() => handleSaveClick('email')} />} />
-          ) : (
-            <div>
-              {userData.email || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('email')} />
-            </div>
+          <h2 className="text-lg font-bold mb-2">Email</h2>
+          <Form.Item name="email" initialValue={userData.email || "Chưa cung cấp"}>
+            {editMode.email ? (
+              <Input suffix={<SaveOutlined onClick={() => handleSaveClick('email')} />} />
+            ) : (
+              <div>
+                {userData.email || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('email')} />
+              </div>
+            )}
+          </Form.Item>
+
+          <h2 className="text-lg font-bold mb-2">Địa chỉ</h2>
+          <Form.Item name="address" initialValue={userData.address || "Chưa cung cấp"}>
+            {editMode.address ? (
+              <Input suffix={<SaveOutlined onClick={() => handleSaveClick('address')} />} />
+            ) : (
+              <div>
+                {userData.address || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('address')} />
+              </div>
+            )}
+          </Form.Item>
+
+          <h2 className="text-lg font-bold mb-2">Số điện thoại</h2>
+          <Form.Item name="phone" initialValue={userData.phone || "Chưa cung cấp"}>
+            {editMode.phone ? (
+              <Input suffix={<SaveOutlined onClick={() => handleSaveClick('phone')} />} />
+            ) : (
+              <div>
+                {userData.phone || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('phone')} />
+              </div>
+            )}
+          </Form.Item>
+          <Button onClick={() => setShowPasswordFields(!showPasswordFields)}>
+            {showPasswordFields ? "Hủy" : "Thay đổi mật khẩu"}
+          </Button>
+          {showPasswordFields && (
+            <>
+              <h2 className="text-lg font-bold mb-2">Mật khẩu</h2>
+              <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
+                <Input.Password />
+              </Form.Item>
+
+              <h2 className="text-lg font-bold mb-2">Nhập lại mật khẩu</h2>
+              <Form.Item name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
+                <Input.Password />
+              </Form.Item>
+              <Button onClick={() => handleSaveClick('password')}>Thay đổi</Button>
+            </>
           )}
-        </Form.Item>
-
-        <h2 className="text-lg font-bold mb-2">Địa chỉ</h2>
-        <Form.Item  name="address" initialValue={userData.address || "Chưa cung cấp"}>
-          {editMode.address ? (
-            <Input suffix={<SaveOutlined onClick={() => handleSaveClick('address')} />} />
-          ) : (
-            <div>
-              {userData.address || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('address')} />
-            </div>
-          )}
-        </Form.Item>
-
-        <h2 className="text-lg font-bold mb-2">Số điện thoại</h2>
-        <Form.Item  name="phone" initialValue={userData.phone || "Chưa cung cấp"}>
-          {editMode.phone ? (
-            <Input suffix={<SaveOutlined onClick={() => handleSaveClick('phone')} />} />
-          ) : (
-            <div>
-              {userData.phone || "Chưa cung cấp"} <EditOutlined onClick={() => handleEditClick('phone')} />
-            </div>
-          )}
-        </Form.Item>
-        <Button onClick={() => setShowPasswordFields(!showPasswordFields)}>
-          {showPasswordFields ? "Hủy" : "Thay đổi mật khẩu"}
-        </Button>
-        {showPasswordFields && (
-          <> 
-            <h2 className="text-lg font-bold mb-2">Mật khẩu</h2>
-            <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
-              <Input.Password />
-            </Form.Item>
-
-            <h2 className="text-lg font-bold mb-2">Nhập lại mật khẩu</h2>
-            <Form.Item name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
-              <Input.Password />
-            </Form.Item>
-            <Button onClick={() => handleSaveClick('password')}>Thay đổi</Button>
-          </>
-        )}
         </Form>
       </div>
     </div>
