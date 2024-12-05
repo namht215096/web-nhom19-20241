@@ -6,12 +6,12 @@ import { formatCash } from "../utils/formatCash";
 import { ProductsCard } from "./ProductsCard";
 
 function Home() {
-  const [isHovered, setIsHovered] = useState(false);
   const [products, setProducts] = useState([]);
   const [productsPC, setProductsPC] = useState([]);
   const [productsVGA, setProductsVGA] = useState([]);
-  const [numProducts, setNumProducts] = useState(5); // State to manage number of products displayed
-
+  const [numProducts, setNumProducts] = useState(5); 
+  const [sortedproducts, setsortedProducts] = useState([]);
+  
   useEffect(() => {
     const updateNumProducts = () => {
       const width = window.innerWidth;
@@ -24,12 +24,13 @@ function Home() {
       } else {
         setNumProducts(2);
       }
+
     };
 
-    updateNumProducts(); // Initial call to set the number of products
-    window.addEventListener("resize", updateNumProducts); // Add event listener for window resize
+    updateNumProducts(); 
+    window.addEventListener("resize", updateNumProducts);
 
-    return () => window.removeEventListener("resize", updateNumProducts); // Cleanup event listener
+    return () => window.removeEventListener("resize", updateNumProducts); 
   }, []);
 
   useEffect(() => {
@@ -46,7 +47,6 @@ function Home() {
         console.error("Error fetching data:", error);
       });
   }, []);
-
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/products/filter?category=pc`)
       .then((response) => response.json())
@@ -54,11 +54,11 @@ function Home() {
         if (data.success) {
           setProductsPC(data.data);
         } else {
-          console.error("Error: Data fetch was not successful", data);
+          console.error("Error: Data fetch was not successful ", data);
         }
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data :", error);
       });
   }, []);
 
@@ -80,15 +80,13 @@ function Home() {
   function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
   const rndInt = randomIntFromInterval(0, 10);
-
   return (
     <div>
       <div className="mb-4 mt-20">
-        <Navbar />
+          <Navbar />
       </div>
-      <div className="lg:mx-20">
+      <div className="lg:mx-20 flex-row">
         <div className="flex ">
           <div className="w-1/5 bg-gray-100 p-4 mr-4 hidden lg:block">
           <ul className="xl:space-y-11 lg:space-y-6 py-2 w-40">
@@ -97,8 +95,9 @@ function Home() {
                 to="/productlist"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/all.svg" alt="" />
-                <i className="laptop mr-2"></i> Tất cả sản phẩm
+
+                <img src="/all.svg" alt="all" />
+                <div className="laptop mr-2"></div> Tất cả sản phẩm
               </Link>
             </li>
             <li className="flex items-center justify-between ">
@@ -106,35 +105,36 @@ function Home() {
                 to="/productlist/laptop"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/lap.svg" alt="" />
-                <i className="gamepad mr-2"></i> Laptop
+
+                <img src="/lap.svg" alt="laptop" />
+                <div className="gamepad mr-2"></div> Laptop
               </Link>
             </li>
-            <li className="flex items-center justify-between hover:font-bold hover:text-red-600">
+            <li className="flex lg:flex items-center justify-between hover:font-bold hover:text-red-600">
               <Link
                 to="/productlist/pc"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/pc.svg" alt="" />
-                <i className="desktop mr-2"></i> PC
+                <img src="/pc.svg" alt="pc" />
+                <div className="desktop mr-2"></div> PC
               </Link>
             </li>
             <li className="flex items-center justify-between">
               <Link
-                to="/productlist/vga"
+                to="/productlist/vga" 
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/comp.svg" alt="" />
-                <i className="gamepad mr-2"></i> VGA
+                <img src="/comp.svg" alt="Vga" />
+                <div className="gamepad mr-2"></div> VGA
               </Link>
             </li>
             <li className="flex items-center justify-between">
               <Link
-                to="/productlist/cpu"
+                to="/productlist/cpu" 
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/comp.svg" alt="" />
-                <i className="gamepad mr-2"></i> CPU
+                <img src="/comp.svg" alt="cpu" />
+                <div className="gamepad mr-2"></div> CPU
               </Link>
             </li>
             <li className="flex items-center justify-between">
@@ -142,8 +142,8 @@ function Home() {
                 to="/productlist/case"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/case.svg" alt="" />
-                <i className="gamepad mr-2"></i> Case
+                <img src="/case.svg" alt="case" />
+                <div className="gamepad mr-2"></div> Case
               </Link>
             </li>
             <li className="flex items-center justify-between">
@@ -151,8 +151,8 @@ function Home() {
                 to="/productlist/screen"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/screen.svg" alt="" />
-                <i className="gamepad mr-2"></i> Màn hình
+                <img src="/screen.svg" alt="monitor" />
+                <div className="gamepad mr-2"></div> Màn hình
               </Link>
             </li>
             <li className="flex items-center justify-between">
@@ -160,8 +160,8 @@ function Home() {
                 to="/productlist/keyboard"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/acs.svg" alt="" />
-                <i className="gamepad mr-2"></i> Bàn phím
+                <img src="/acs.svg" alt="acs" />
+                <div className="gamepad mr-2"></div> Bàn phím
               </Link>
             </li>
             <li className="flex items-center justify-between">
@@ -169,8 +169,8 @@ function Home() {
                 to="/productlist/mouse"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/mouse.svg" alt="" />
-                <i className="gamepad mr-2"></i> Chuột
+                <img src="/mouse.svg" alt="mouse" />
+                <div className="gamepad mr-2"></div> Chuột
               </Link>
             </li>
             <li className="flex items-center justify-between">
@@ -178,28 +178,27 @@ function Home() {
                 to="/productlist/headphone"
                 className="flex items-center hover:font-bold hover:text-red-600"
               >
-                <img src="/sup.svg" alt="" />
-                <i className="gamepad mr-2"></i> Tai nghe
+                <img src="/sup.svg" alt="headphone" />
+                <div className="gamepad mr-2"></div> Tai nghe
               </Link>
             </li>
           </ul>
-
           </div>
           <div className="lg:w-4/5 w-full ">
             <div className="flex ">
               <div className="w-full cursor-pointer">
-                <img src="nvidiabaner.jpg" alt="" />
+                <img src="nvidiabaner.jpg" alt="ad" />
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4 mt-4">
-              <div className="">
-                <img src="Screen Shot 2024-11-22 at 07.13.05.png" alt="" />
+              <div className="items-center">
+                <img src="Screen Shot 2024-11-22 at 07.13.05.png" alt="ad" />
               </div>
-              <div className="">
-                <img src="b.png" alt="Laptop" />
+              <div className="items-center">
+                <img src="b.png" alt="ad1" />
               </div>
-              <div className="">
-                <img src="c.png" alt="Laptop" />
+              <div className="items-center">
+                <img src="c.png" alt="ad2" />
               </div>
             </div>
           </div>
@@ -210,8 +209,6 @@ function Home() {
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Laptop bán chạy</h1>
               </div>
-
-              
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
@@ -238,7 +235,6 @@ function Home() {
               <div className="flex justify-between items-center mb-4">
                 <div className="flex space-x-4"></div>
               </div>
-
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
@@ -249,7 +245,7 @@ function Home() {
                       key={product.product_id}
                       className="product-card p-4 rounded-lg shadow hover:shadow-lg"
                     >
-                      <ProductsCard product={product} />
+                     <ProductsCard product={product} />
                     </div>
                   </Link>
                 ))}
@@ -258,15 +254,12 @@ function Home() {
           </div>
           <div className=" mt-8 mb-12">
             <div className="bg-white p-4 ">
-      
               <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold">Linh kiện bán chạy</h1>
               </div>
-
               <div className="flex justify-between items-center mb-4">
                 <div className="flex space-x-4"></div>
               </div>
-
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
@@ -290,5 +283,4 @@ function Home() {
     </div>
   );
 }
-
 export default Home;
