@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Form, notification } from 'antd';
 import { EditOutlined, SaveOutlined } from '@ant-design/icons';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const UserInfo = () => {
   const [userData, setUserData] = useState(null);
