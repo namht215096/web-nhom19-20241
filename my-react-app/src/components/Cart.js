@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal, Button, notification } from "antd";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import { Modal, notification } from "antd";
 import { Link } from "react-router-dom";
 import { formatCash } from "../utils/formatCash";
-import AlertMess from "./AlertMess";
 import { DeleteFilled } from "@ant-design/icons";
 
 function Cart() {

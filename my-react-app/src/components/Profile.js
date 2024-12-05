@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import {
-  DesktopOutlined,
   ShoppingCartOutlined,
   DollarOutlined,
   UserOutlined,

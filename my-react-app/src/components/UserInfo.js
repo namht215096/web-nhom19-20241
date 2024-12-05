@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Button, Form, notification } from 'antd';
 import { EditOutlined, SaveOutlined } from '@ant-design/icons';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 const UserInfo = () => {
   const [userData, setUserData] = useState(null);
@@ -39,6 +39,18 @@ const UserInfo = () => {
     setEditMode({ ...editMode, [field]: true });
   };
 
+  /**
+   * Handles the save button click event for updating user information.
+   * 
+   * @param {string} field - The field to be updated.
+   * 
+   * Validates the specified field and additional password fields if applicable.
+   * Checks for token presence and decodes it to retrieve the user ID.
+   * Constructs the update data payload and sends a POST request to update user information.
+   * Displays success or error notifications based on the response.
+   * 
+   * @returns {void}
+   */
   const handleSaveClick = (field) => {
     const fieldsToValidate = [field];
     if (showPasswordFields) {
