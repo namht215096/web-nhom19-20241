@@ -5,7 +5,7 @@ function ProductListLaptop() {
   return (
     <List
       title="Laptop"
-      apiEndpoint="http://localhost:8080/api/v1/products/filter?category=laptop"
+      apiEndpoint="https://web-back-end-1.onrender.com/api/v1/products/filter?category=laptop"
     />
   );
 }

@@ -8,7 +8,7 @@ import Footer from './Footer';
 import List from './List';
 
 function ProductList() {
-    return <List title="Tất cả sản phẩm" apiEndpoint="http://localhost:8080/api/v1/products/list" />;
+    return <List title="Tất cả sản phẩm" apiEndpoint="https://web-back-end-1.onrender.com/api/v1/products/list" />;
 }
 
 export default ProductList;

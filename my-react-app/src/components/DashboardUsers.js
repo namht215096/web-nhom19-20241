@@ -23,7 +23,7 @@ const DashboardUsers = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8080/api/v1/auth/admin/all-users?email=${emailFilter}&address=${addressFilter}&phone=${phoneFilter}`, {
+      const response = await axios.get(`https://web-back-end-1.onrender.com/api/v1/auth/admin/all-users?email=${emailFilter}&address=${addressFilter}&phone=${phoneFilter}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -58,7 +58,7 @@ const DashboardUsers = () => {
       onOk: async () => {
         const token = localStorage.getItem("token");
         try {
-          const response = await axios.delete(`http://localhost:8080/api/v1/auth/admin/delete-user/${userId}`, {
+          const response = await axios.delete(`https://web-back-end-1.onrender.com/api/v1/auth/admin/delete-user/${userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
 

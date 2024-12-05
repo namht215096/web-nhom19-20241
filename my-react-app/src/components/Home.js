@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import { formatCash } from "../utils/formatCash";
 import { ProductsCard } from "./ProductsCard";
+import { LoadingOutlined } from "@ant-design/icons";
 
 function Home() {
   const [isHovered, setIsHovered] = useState(false);
@@ -33,7 +34,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=laptop`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=laptop`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -48,7 +49,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=pc`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=pc`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -63,7 +64,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=vga`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=vga`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -214,6 +215,7 @@ function Home() {
               </div>
 
               {/* Grid  */}
+              {products.length > 0 ? (
               <div className={`grid grid-cols-5 lg:gap-3 gap-1`}>
                 {products.slice(0, 5).map((product) => (
                   <Link
@@ -229,6 +231,11 @@ function Home() {
                   </Link>
                 ))}
               </div>
+              ) : (
+                <div className="flex justify-center items-center h-screen">
+                  <LoadingOutlined style={{ color: "#DC2626" }} />
+                </div>
+              )}
             </div>
           </div>
           <div className=" mt-8">
@@ -244,6 +251,7 @@ function Home() {
               </div>
 
               {/* Grid  */}
+              {productsPC.length > 0 ? (
               <div className={`grid grid-cols-${numProducts} gap-4`}>
                 {productsPC.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
@@ -257,8 +265,13 @@ function Home() {
                       <ProductsCard product={product} />
                     </div>
                   </Link>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex justify-center items-center h-screen">
+                  <LoadingOutlined style={{ color: "#DC2626" }} />
+                </div>
+              )}
             </div>
           </div>
           <div className=" mt-8 mb-12">
@@ -274,6 +287,7 @@ function Home() {
               </div>
 
               {/* Grid  */}
+              {productsVGA.length > 0 ? (
               <div className={`grid grid-cols-${numProducts} gap-4`}>
                 {productsVGA.slice(rndInt, rndInt + numProducts).map((product) => (
                   <Link
@@ -289,6 +303,11 @@ function Home() {
                   </Link>
                 ))}
               </div>
+              ) : (
+                <div className="flex justify-center items-center h-screen">
+                  <LoadingOutlined style={{ color: "#DC2626" }} />
+                </div>
+              )}
             </div>
           </div>
         </div>

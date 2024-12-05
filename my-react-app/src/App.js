@@ -19,6 +19,8 @@ import ProductsListKeyboard from './components/ProductsListKeyboard.js';
 import ProductsListCase from './components/ProductsListCase.js';
 import ProductsListMouse from './components/ProductsListMouse.js';
 import ProductsListHeadphone from './components/ProductsListHeadphone.js';
+import AdminGate from './components/AdminGate.js';
+import Illegal from './components/Illegal.js';
 function App() {
   return (
     <Router>
@@ -51,8 +53,11 @@ function App() {
         <Route path="/productlist/headphone" element={<ProductsListHeadphone/>} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
+        </Route>
+        <Route element={<AdminGate />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
+        <Route path="/unauthorized" element={<Illegal />} />
       </Routes>
     </Router>
   );

@@ -16,7 +16,7 @@ const UserInfo = () => {
       return;
     }
 
-    fetch("http://localhost:8080/api/v1/auth/get-user", {
+    fetch("https://web-back-end-1.onrender.com/api/v1/auth/get-user", {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -74,7 +74,7 @@ const UserInfo = () => {
 
       console.log("Request payload:", updateData);
 
-      fetch(`http://localhost:8080/api/v1/auth/update-info`, {
+      fetch(`https://web-back-end-1.onrender.com/api/v1/auth/update-info`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
