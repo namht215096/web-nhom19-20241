@@ -32,7 +32,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=laptop`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=laptop`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -46,7 +46,7 @@ function Home() {
       });
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=pc`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=pc`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
@@ -61,7 +61,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/v1/products/filter?category=vga`)
+    fetch(`https://web-back-end-1.onrender.com/api/v1/products/filter?category=vga`)
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
