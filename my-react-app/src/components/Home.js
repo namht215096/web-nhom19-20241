@@ -181,14 +181,15 @@ function Home() {
                 <img src="/sup.svg" alt="headphone" />
                 <div className="gamepad mr-2"></div> Tai nghe
               </Link>
+
             </li>
           </ul>
           </div>
           <div className="lg:w-4/5 w-full ">
-            <div className="flex ">
-              <div className="w-full cursor-pointer">
+            <div className="flex ">    
+              <div className="w-full cursor-pointer">  
                 <img src="nvidiabaner.jpg" alt="ad" />
-              </div>
+              </div>  
             </div>
             <div className="grid grid-cols-3 gap-4 mt-4">
               <div className="items-center">
